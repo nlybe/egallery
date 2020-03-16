@@ -1,0 +1,72 @@
+/**
+ * Elgg Entities Gallery
+ * @package egallery 
+ */
+
+.elgg-egallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+
+.elgg-egallery li a {
+    border: 0;
+    background-color: transparent;
+}
+
+.elgg-egallery li a img {
+    border: 1px solid #eaeaea;
+    padding: 3px;
+    background-color: #fff;
+}
+
+.elgg-egallery li .ecaption {
+    text-align: center;
+    font-size: smaller;
+}
+
+.elgg-egallery-item-icons {
+    padding: 0 4px 0 0;
+    text-align: right; 
+    display: block;
+    margin: 0 0 10px;
+}
+
+.elgg-egallery-item-icons a.elgg-anchor:hover {
+    text-decoration: none;
+}
+
+.elgg-egallery-item-icons .elgg-icon {
+    color: #CCC;
+    font-size: 18px;
+    line-height: 1em;
+    margin: 0 2px;
+}
+
+#p_gallery_accordion {
+    margin: 0 0 30px;
+    display: block;
+    clear: both;
+    width: 100%;
+}
+
+#p_gallery_accordion .ui-accordion-header {
+    padding: 4px 10px;
+    background-color: #f9f9f9;
+    font-size: 110%;
+    border: 1px solid #eaeaea;
+    border-radius: 3px;
+    margin: 0 0 2px 0;
+    cursor: pointer;
+}
+
+.elgg-showcase-screenshot-cover {
+    border: 0;
+    margin: 0;
+}
+
+.elgg-showcase-screenshot-cover img {
+    border: 1px solid #696969!important;
+    padding: 3px;
+    margin: 0;
+}
