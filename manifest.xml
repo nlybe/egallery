@@ -9,7 +9,7 @@
     <category>widgets</category>
     <category>nlybe</category>
     <description>Attach photos on Elgg Entities</description>
-    <repository>https://github.com/nlybe/Elgg-EntitiesGallery</repository>
+    <repository>https://github.com/nlybe/egallery</repository>
     <website>https://github.com/nlybe/</website>
     <copyright>(C) Nikos Lyberakis 2012 - 2020</copyright>
     <license>GNU General Public License version 2</license>
