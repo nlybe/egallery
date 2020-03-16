@@ -1,0 +1,26 @@
+{
+    "name": "nlybe/egallery",
+    "description": "Attach photos on Elgg Entities",
+    "type": "elgg-plugin",
+    "keywords": [
+        "elgg", 
+        "plugin",
+        "photos",
+        "gallery"
+    ],
+    "homepage": "https://github.com/nlybe/Elgg-EntitiesGallery",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Nikos Lyberakis",
+            "email": "nikos@lyberakis.gr",
+            "role": "Web Developer"
+        }
+    ],
+    "require": {
+        "composer/installers": ">=1.0.8"
+    },
+    "extra": {
+        "installer-name": "egallery"
+    }
+}
