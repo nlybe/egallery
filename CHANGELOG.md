@@ -1,5 +1,10 @@
 # Change Log
 
+## 3.2 (June 2020)
+
+- Minor fixes
+- Documentation update
+
 ## 3.1 (March 2020)
 
 - Option to add description to photos, if enabled in settings.

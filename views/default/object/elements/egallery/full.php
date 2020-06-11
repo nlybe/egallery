@@ -9,12 +9,11 @@ if (elgg_in_context('activity')) {
 }
 
 $entity = elgg_extract('entity', $vars);
-
-if (!$entity instanceof ElggEntity) {
+if (!$entity instanceof \ElggEntity) {
     return;
 }
 
-$sub = ($entity instanceof ElggEntity)?$entity->getSubtype():'';
+$sub = $entity->getSubtype();
 if (EgalleryOptions::isEntityTypeGalleryEnabled($sub)) {
     $gallery = EntityGallery::getGallery($entity);
     $title = $gallery->title?$gallery->title:elgg_echo('egallery:photos:view:title');

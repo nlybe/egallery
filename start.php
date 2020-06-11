@@ -5,7 +5,6 @@
  */
 
 require_once(dirname(__FILE__) . "/lib/hooks.php");
-require_once(dirname(__FILE__) . "/lib/events.php");
 require_once(dirname(__FILE__) . "/lib/widgets.php");
 
 elgg_register_event_handler('init', 'system', 'egallery_init');
@@ -27,7 +26,7 @@ function egallery_init() {
     // create gallery items from items uploaded
     elgg_register_plugin_hook_handler('upload:after', 'dropzonejs_api', 'egallery_item_upload');
 
-    // appends connected entities to entity's full view
+    // appends gallery to entity's full view
     elgg_register_plugin_hook_handler('view_vars', 'object/elements/full', 'egallery_filter_full_view_vars');
 
     // set cover sizes

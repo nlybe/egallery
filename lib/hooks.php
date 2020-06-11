@@ -119,7 +119,7 @@ function egallery_item_upload($hook, $entity_type, $returnvalue, $params) {
 }
 
 /**
- * Appends connected entities to entity's full view
+ * Appends gallery to entity's full view
  *
  * @param string $hook   "view_vars"
  * @param string $type   "object/elements/full"
