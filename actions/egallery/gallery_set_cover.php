@@ -8,12 +8,12 @@
 $item_guid = get_input("item");
 
 $item = get_entity($item_guid);
-if (!elgg_instanceof($item, 'object', GalleryItem::SUBTYPE)) {
+if (!$item instanceof \GalleryItem) {
     return elgg_error_response(elgg_echo('egallery:invalid_item'));
 }
 
 $p_gallery = $item->getContainerEntity();
-if (!elgg_instanceof($p_gallery, 'object', EntityGallery::SUBTYPE)) {
+if (!$p_gallery instanceof \EntityGallery) {
     return elgg_error_response(elgg_echo('egallery:invalid_gallery'));
 }
 

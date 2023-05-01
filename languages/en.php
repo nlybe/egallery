@@ -43,8 +43,6 @@ return [
     // gallery item
     'egallery:item:download' => "Download this", 
     'egallery:item:default_title' => 'Edit Gallery Item',
-    // 'egallery:add:category' => "Category",
-    // 'egallery:add:category:help' => "Set category for this gallery item",
     'egallery:item:edit' => 'Edit item information', 
     'egallery:item:set_cover' => 'Set as Gallery Cover', 
     'egallery:item:save:missing_title' => "Title is missing. This item cannot be saved.",

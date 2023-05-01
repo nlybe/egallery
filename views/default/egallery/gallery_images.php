@@ -4,10 +4,13 @@
  * @package egallery 
  */
 
+use Egallery\EgalleryOptions;
+
 elgg_require_js('egallery/gallery');
 
 $egallery = elgg_extract('gallery', $vars, '');
-if (!elgg_instanceof($egallery, 'object', EntityGallery::SUBTYPE)) {
+// if (!elgg_instanceof($egallery, 'object', EntityGallery::SUBTYPE)) {
+if (!$egallery instanceof \EntityGallery) {
     return;
 }
 

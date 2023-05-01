@@ -13,7 +13,8 @@ if (!$container instanceof ElggEntity) {
 else {
     // elgg_set_page_owner_guid(elgg_get_logged_in_user_guid());
     $egallery = EntityGallery::getGallery($container);
-    if (elgg_instanceof($egallery, 'object', EntityGallery::SUBTYPE)) {
+    // if (elgg_instanceof($egallery, 'object', EntityGallery::SUBTYPE)) {
+    if ($egallery instanceof \EntityGallery) {
         $vars = entity_gallery_prepare_form_vars($container, $egallery);
     }
     else {

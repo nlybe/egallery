@@ -4,13 +4,16 @@
  * @package egallery 
  */
 
+use Egallery\EgalleryOptions;
+
 $file = elgg_extract('p_gallery_item', $vars, '');
 $item_class = elgg_extract('item_class', $vars, '');
 $show_icons = elgg_extract('show_icons', $vars, true);
 $thumb_size = elgg_extract('thumb_size', $vars, 'small');
 $show_url = elgg_extract('show_url', $vars, false);
 
-if (!elgg_instanceof($file, 'object', GalleryItem::SUBTYPE)) {
+// if (!elgg_instanceof($file, 'object', GalleryItem::SUBTYPE)) {
+if (!$file instanceof \GalleryItem) {
     return;
 }
     

@@ -7,7 +7,7 @@
 $guid = (int) get_input('guid');
 
 $entity = get_entity($guid);
-if (!elgg_instanceof($entity, 'object', GalleryItem::SUBTYPE)) {
+if (!$entity instanceof \GalleryItem) {
     return elgg_error_response(elgg_echo('egallery:item:delete:failed'));
 }
 

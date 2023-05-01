@@ -8,7 +8,6 @@
 $title = get_input("title");
 $description = nl2br(get_input('description'));
 $url = get_input("url");
-// $category = get_input("category");
 $tags = get_input("tags");
 $access_id = (int) get_input("access_id");
 $guid = (int) get_input('guid');
@@ -31,8 +30,7 @@ if ($guid > 0) {
 }
 
 if ($guid == 0) {
-    $entity = new ElggObject;
-    $entity->subtype = GalleryItem::SUBTYPE;
+    $entity = new GalleryItem;
     $entity->container_guid = $container_guid;
 } else {
     $entity = get_entity($guid);
@@ -51,7 +49,6 @@ $tagarray = string_to_tag_array($tags);
 $entity->title = $title;
 $entity->description = $description;
 $entity->url = $url;
-// $entity->category = $category;
 $entity->tags = $tagarray;
 $entity->container_guid = $container_guid;
 $entity->access_id = $access_id;

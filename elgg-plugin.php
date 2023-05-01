@@ -4,7 +4,23 @@
  * @package egallery 
  */
 
+use Egallery\Elgg\Bootstrap;
+
+require_once(dirname(__FILE__) . '/lib/hooks.php');
+require_once(dirname(__FILE__) . '/lib/functions.php');
+
 return [
+    'plugin' => [
+        'name' => 'Entities Gallery',
+		'version' => '4.3',
+		'dependencies' => [
+			'dropzonejs_api' => [
+				'must_be_active' => true,
+                'version' => '>4'
+			]
+		],
+	],	
+    'bootstrap' => Bootstrap::class,
 	'entities' => [
         [
             'type' => 'object',
@@ -19,8 +35,7 @@ return [
             'searchable' => false,
         ]
     ],
-	'settings' => [],
-    'actions' => [
+	'actions' => [
         'egallery/gallery_edit' => [],
         'egallery/gallery_item_del' => [],
         'egallery/get_latest_item' => [],
@@ -48,13 +63,28 @@ return [
 			'resource' => 'egallery/gallery_item_edit',
 		],
     ],
-	'widgets' => [],
-    'views' => [
-        'default' => [
-            'egallery/graphics/' => __DIR__ . '/graphics',
-        ],
-    ],
-    'upgrades' => [],
+	'hooks' => [
+		'entity:url' => [
+			'object' => [
+				'egallery_object_set_url' => [ 'priority' => 400],
+			],
+		],
+		'register' => [
+			'menu:entity' => [
+				'egallery_entity_menu_setup' => [],
+			],
+		],
+		'upload:after' => [
+			'dropzonejs_api' => [
+				'egallery_item_upload' => [],
+			],
+		],
+		'view_vars' => [
+			'object/elements/full' => [
+				'egallery_filter_full_view_vars' => [],
+			],
+		],
+	],
     'settings' => [
         'show_description' => false,
         'show_url' => true,

@@ -4,17 +4,16 @@
  * @package egallery 
  */
 
+use Egallery\EgalleryOptions;
+
  /**
  * Add gallery option on entities, if enabled on settings
  * 
- * @param type $hook
- * @param type $type
- * @param type $return
- * @param type $params
- * @return type
+ * @param \Elgg\Hook $hook
  */ 
-function egallery_entity_menu_setup($hook, $type, $return, $params) {
-    $entity = $params['entity'];
+function egallery_entity_menu_setup(\Elgg\Hook $hook) {
+    $return = $hook->getValue();
+    $entity = $hook->getEntityParam();
     if (!$entity instanceof ElggEntity) {
         return false;
     }
@@ -47,101 +46,84 @@ function egallery_entity_menu_setup($hook, $type, $return, $params) {
 /**
  * Format and return the URL for entity gallery objects
  *
- * @param string $hook
- * @param string $type
- * @param string $url
- * @param array  $params
- * @return string URL of lecture
+ * @param \Elgg\Hook $hook
  */
-function egallery_object_set_url($hook, $type, $url, $params) {
-    $entity = $params['entity'];
-    $friendly_title = elgg_get_friendly_title($entity->title);
+function egallery_object_set_url(\Elgg\Hook $hook) {
+    $entity = $hook->getEntityParam();    
+    if (!$entity instanceof \EntityGallery) {
+		return;
+	}
 
-    if (elgg_instanceof($entity, 'object', EntityGallery::SUBTYPE)) {
-        return "egallery/view/{$entity->guid}/$friendly_title";
-    }
-    
-    // if (elgg_instanceof($entity, 'object', GalleryItem::SUBTYPE)) {
-    //     return "egallery/gallery/item/view/{$entity->guid}/$friendly_title";
-    // }    
+    $friendly_title = elgg_get_friendly_title($entity->title);
+    return "egallery/view/{$entity->guid}/$friendly_title";
 }
 
 /**
  * Create Gallery Items from items uploaded
  * 
- * @param type $hook
- * @param type $entity_type
- * @param type $returnvalue
- * @param type $params
- * @return type
+ * @param \Elgg\Hook $hook
  */
-function egallery_item_upload($hook, $entity_type, $returnvalue, $params) {
+function egallery_item_upload(\Elgg\Hook $hook) {
     elgg_gatekeeper();
+    $return = $hook->getValue();
     
-    $file = $params['upload']->file;
-
-    $ia = elgg_set_ignore_access(true);
-    $fh = get_entity($file->getGUID());
-    $container = $fh->getContainerentity();   
-    
-    $pieces = explode(".", $fh->getFilename());
-    $prefix = $pieces[0];
-    $fh->file_prefix = $prefix;
-    $fh->access_id = $container->access_id;    
-    $fh->save();
-    $source = $fh->getFilenameOnFilestore();
-        
-    $icon_sizes = elgg_get_config('gallery_item_sizes'); 
-    foreach ($icon_sizes as $name => $size_info) {   
-        try {
-            $fh->setFilename("gallery_item/".$file->getGUID()."_".$name.".jpg");
-            // touch file location in order to create the file
-            $fh->open('write');
-            $fh->close();
-
-            $resized = elgg_save_resized_image($source, $fh->getFilenameOnFilestore(), [
-                'w' => $size_info['w'], 
-                'h' => $size_info['h'], 
-                'square' => $size_info['square'], 
-                'upscale' => $size_info['upscale']
-            ]);
-        } catch (Exception $e) {
-            error_log($e->getMessage());
+    $file = $hook->getParam('upload')->file;
+    return elgg_call(ELGG_IGNORE_ACCESS, function() use ($file) {
+        $fh = get_entity($file->getGUID());
+        $container = $fh->getContainerentity();   
+        $pieces = explode(".", $fh->getFilename());
+        $prefix = $pieces[0];
+        $fh->file_prefix = $prefix;
+        $fh->access_id = $container->access_id;    
+        $fh->save();
+        $source = $fh->getFilenameOnFilestore();
             
-            if ($fh->exists()) {
-                $fh->delete();
-            }
-        }        
-    }
-    elgg_set_ignore_access($ia);
-    
-    return $returnvalue;
+        $icon_sizes = elgg_get_config('gallery_item_sizes'); 
+        foreach ($icon_sizes as $name => $size_info) {   
+            try {
+                $fh->setFilename("gallery_item/".$file->getGUID()."_".$name.".jpg");
+                // touch file location in order to create the file
+                $fh->open('write');
+                $fh->close();
+
+                $resized = elgg_save_resized_image($source, $fh->getFilenameOnFilestore(), [
+                    'w' => $size_info['w'], 
+                    'h' => $size_info['h'], 
+                    'square' => $size_info['square'], 
+                    'upscale' => $size_info['upscale']
+                ]);
+            } catch (Exception $e) {
+                if ($fh->exists()) {
+                    $fh->delete();
+                }
+            }        
+        }
+    });        
+
+    return $return;
 }
 
 /**
  * Appends gallery to entity's full view
  *
- * @param string $hook   "view_vars"
- * @param string $type   "object/elements/full"
- * @param array  $return View vars
- * @param array  $params Hook params
+ * @param \Elgg\Hook $hook
  * @return array
  */
-function egallery_filter_full_view_vars($hook, $type, $return, $params) {
+function egallery_filter_full_view_vars(\Elgg\Hook $hook) {
 
+    $return = $hook->getValue();
     $entity = elgg_extract('entity', $return);
-    if (!$entity) {
+    if (!$entity instanceof \ElggEntity) {
         return;
     }
-
+    
     $attached = elgg_view('object/elements/egallery/full', [
         'entity' => $entity,
-    ]);
-
+    ]);    
     if (!$attached) {
         return;
     }
-
+    
     $body = elgg_extract('body', $return, '');
     if (!$body) {
         $body = $attached;

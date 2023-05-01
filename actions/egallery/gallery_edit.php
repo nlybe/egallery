@@ -35,8 +35,7 @@ if ($guid > 0) {
 }
 
 if ($guid == 0) {
-    $entity = new ElggObject;
-    $entity->subtype = EntityGallery::SUBTYPE;
+    $entity = new EntityGallery;
     $entity->container_guid = $container_guid;
     
     // if no title on new upload, grab filename

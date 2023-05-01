@@ -1,9 +1,8 @@
-define(function(require) {
-    var elgg = require('elgg');
-    var $ = require('jquery');
+define(['jquery', 'elgg/Ajax'], function($, Ajax) {   
     
-    $( ".dropzone_upload_trigger" ).change(function() {
-        elgg.action('egallery/get_latest_item', {
+    $( ".dropzone_upload_trigger" ).on('change',function () {
+        var ajax = new Ajax();
+        ajax.action('egallery/get_latest_item', {
             data: {
                 container_guid: $('#container_guid').val(),
                 file_guid: $(this).val()

@@ -4,6 +4,8 @@
  * @package egallery 
  */
 
+use Egallery\EgalleryOptions;
+
 if (elgg_in_context('activity')) {
     return;
 }

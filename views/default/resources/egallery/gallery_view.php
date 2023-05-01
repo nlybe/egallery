@@ -4,6 +4,8 @@
  * @package egallery 
  */
 
+use Egallery\EgalleryOptions;
+
 // get entity
 $guid = elgg_extract('guid', $vars, '');
 $entity = get_entity($guid);

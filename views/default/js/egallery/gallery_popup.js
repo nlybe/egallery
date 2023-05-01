@@ -1,8 +1,4 @@
-define(function(require) {
-//    var elgg = require('elgg');
-//    var $ = require('jquery');
-//    require('jquery-ui');
-//    
+define(function(require) {    
     var lightbox = require('elgg/lightbox');
     
     var options = {
@@ -14,8 +10,4 @@ define(function(require) {
     
     lightbox.bind('a.elgg-lightbox-iframe', options, false); 
 
-//    lightbox.resize({
-//       width: '500px',
-//       height: '500px'
-//    });
 });

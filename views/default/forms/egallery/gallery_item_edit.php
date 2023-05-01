@@ -4,6 +4,8 @@
  * @package egallery 
  */
 
+use Egallery\EgalleryOptions;
+
 $title = elgg_extract('title', $vars, '');
 $url = elgg_extract('url', $vars, '');
 $description = elgg_extract('description', $vars, '');

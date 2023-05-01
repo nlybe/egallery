@@ -5,16 +5,14 @@
  */
 
 // get entity
-$guid = elgg_extract('guid', $vars, '');
+$guid = elgg_extract('guid', $vars, 0);
 
-//$img = get_entity($page[1]);
 $img = get_entity($guid);
-$size = elgg_extract('size', $vars, 'medium');
-
-if (!elgg_instanceof($img, 'object', GalleryItem::SUBTYPE)) {
+if (!$img instanceof \GalleryItem) {
     forward('','404');
 }
 
+$size = elgg_extract('size', $vars, 'medium');
 if ($size == 'original') {
     $img->setFilename($img->file_prefix . '.jpg');
 }

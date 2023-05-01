@@ -4,6 +4,8 @@
  * @package egallery 
  */
 
+use Egallery\EgalleryOptions;
+
 $plugin = elgg_get_plugin_from_id(EgalleryOptions::PLUGIN_ID);
 $entity = elgg_extract('entity', $vars);
 
