@@ -31,6 +31,18 @@ echo elgg_view_field([
     'checked' => ($plugin->show_url || !isset($plugin->show_url) ? true : false),
 ]);
 
+// set include title on news item url
+echo elgg_view_field([
+    'id' => 'gallery_url_include_title',
+    '#type' => 'checkbox',
+    'name' => 'params[gallery_url_include_title]',
+    'switch' => true,
+    'value' => 'yes',
+    'checked' => ($plugin->gallery_url_include_title === 'yes'), 
+    '#label' => elgg_echo('egallery:settings:gallery_url_include_title'),
+    '#help' => elgg_echo('egallery:settings:gallery_url_include_title:note'),
+]);
+
 // $entity_stats = get_entity_statistics();
 $searchable = [];
 $registered = get_registered_entity_types();

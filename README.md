@@ -15,3 +15,15 @@ Use the following composer command to install the plugin:
 ```bash
 composer require nlybe/egallery
 ```
+
+## Improvements
+
+- FIXED - Fix gallery url for greek (settings)
+- Add photos sorting option
+- Import from tidypics
+- Display my galleries
+- Add new gallery creation to the river
+- Add widget for my galleries
+- Add mass photos deletion
+- Option to delete gallery (and photos)
+- Do not display gallery if empty

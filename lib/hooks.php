@@ -30,7 +30,7 @@ function egallery_entity_menu_setup(\Elgg\Hook $hook) {
 
         $gallery = EntityGallery::getGallery($entity);
         if ($gallery) {
-            $options['href'] = elgg_normalize_url("egallery/view/{$gallery->getGUID()}");
+            $options['href'] = $gallery->getUrl();
         }
         else {
             $options['href'] = elgg_normalize_url("egallery/edit/{$entity->getGUID()}");
@@ -54,7 +54,7 @@ function egallery_object_set_url(\Elgg\Hook $hook) {
 		return;
 	}
 
-    $friendly_title = elgg_get_friendly_title($entity->title);
+    $friendly_title = EgalleryOptions::includeTitleOnGalleryUrl()?elgg_get_friendly_title($entity->title):"";
     return "egallery/view/{$entity->guid}/$friendly_title";
 }
 

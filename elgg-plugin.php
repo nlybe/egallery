@@ -88,6 +88,7 @@ return [
     'settings' => [
         'show_description' => false,
         'show_url' => true,
+		'gallery_url_include_title' => 'yes',
 	],
 ];
 

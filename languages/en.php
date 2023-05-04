@@ -71,7 +71,9 @@ return [
     'egallery:settings:show_description:note' => 'Check this if want to include a description for each photo',
     'egallery:settings:show_url' => 'Include Image Source URL',
     'egallery:settings:show_url:note' => 'Check this if want to include a source url for each photo',
-
+    'egallery:settings:gallery_url_include_title' => "Include title on gallery item URL",
+    'egallery:settings:gallery_url_include_title:note' => "The function elgg_get_friendly_title doesn't work good with some languages, so it may raise an invalid URI path issue. In this case uncheck this option to exclude the title from gallery item url.",
+    
     'egallery:menu:label' => 'Edit Gallery',
     'egallery:menu:title' => 'Edit %s photo gallery',
     'egallery:photos:view:title' => 'Photos',

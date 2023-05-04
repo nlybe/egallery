@@ -67,7 +67,21 @@ class EgalleryOptions {
         } 
 
         return false;
-    } 
+    }  
+    
+    /**
+     * Check if include title on news item url
+     * 
+     * @return boolean
+     */
+    Public Static function includeTitleOnGalleryUrl() {
+        $include_title = self::getParams('gallery_url_include_title');
+        if ($include_title === 'yes') {
+            return true;
+        } 
+
+        return false;
+    }
     
 	// /**
 	//  * Make the correct folder structure for an owner
