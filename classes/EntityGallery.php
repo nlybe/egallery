@@ -122,6 +122,31 @@ class EntityGallery extends ElggObject {
         
         return (empty($galleries)) ? false : $galleries[0];
     }
+
+    /**
+     * Delete the entity and all items copies
+     * 
+     * @return boolean
+     */
+    public function delete($follow_symlinks = true) {
+        if (!$this->canDelete()) {
+			return false;
+		}
+
+        $images = $this->getGalleryImages();
+        if ($images && is_array($images)) {
+            foreach ($images as $im) {
+                $im->delete();
+            }
+        }
+
+        // finally delete the gallery
+        if (!parent::delete()) {
+            return false;
+        } 
+        
+        return true;
+    }
     
     // /**
     //  * Creates portfolio gallery for the given container

@@ -44,6 +44,39 @@ class GalleryItem extends ElggFile {
         }
         
         return '';
-    }     
+    }
+
+    /**
+     * Delete the entity and item copies
+     * 
+     * @return boolean
+     */
+    public function delete($follow_symlinks = true) {
+        if (!$this->canDelete()) {
+			return false;
+		}
+
+        $guid = $this->getGUID();
+        $owner_guid = $this->owner_guid;
+        $icon_sizes = elgg_get_config('gallery_item_sizes'); 
+        foreach ($icon_sizes as $name => $size_info) {
+            $file = new ElggFile();
+            $file->owner_guid = $owner_guid;
+            $file->setFilename("gallery_item/".$guid."_".$name.".jpg");
+            $filepath = $file->getFilenameOnFilestore();
+            
+            if (!$file->delete()) {
+                elgg_log("Gallery item remove failed. Remove $filepath manually, please.", 'WARNING');
+            }
+        }
+
+        // finally delete the original file
+        $this->setFilename(elgg_strtolower("$this->filestore_prefix/{$this->upload_time}{$this->originalfilename}"));
+        if (!parent::delete()) {
+            return false;
+        } 
+        
+        return true;
+    } 
 
 }

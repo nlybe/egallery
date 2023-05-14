@@ -8,13 +8,9 @@ use Egallery\EgalleryOptions;
 
 // get entity
 $guid = elgg_extract('guid', $vars, '');
+elgg_entity_gatekeeper($guid, 'object', 'entity_gallery');
+
 $entity = get_entity($guid);
-
-if (!$entity) {
-    register_error(elgg_echo('egallery:invalid_access'));
-    forward(REFERRER);
-}
-
 $vars['gallery_view'] = get_input('v');
 $vars['gallery'] = $entity;
 
@@ -25,30 +21,29 @@ if (!EgalleryOptions::isEntityTypeGalleryEnabled($sub)) {
     forward(REFERRER);
 }
 
-$title = $entity->title;
 elgg_push_breadcrumb(elgg_echo('egallery:breadcrumb:label', [$container->title]), $container->getURL());
-elgg_push_breadcrumb($title);
+elgg_push_breadcrumb($entity->getDisplayName());
 
 $content = elgg_view_entity($entity, [
     'full_view' => true,
     'show_responses' => false,
-    ]);
+]);
 $content .= elgg_view('egallery/gallery_images', $vars);
 
 if ($container->canWriteToContainer(0, 'object', EntityGallery::SUBTYPE)) {
-    $form_vars = array('name' => 'photos_upload', 'enctype' => 'multipart/form-data', 'class' => 'dropzone');
-    $vars = array('container_guid' => $entity->getGUID(), 'subtype' => GalleryItem::SUBTYPE);
+    $form_vars = ['name' => 'photos_upload', 'enctype' => 'multipart/form-data', 'class' => 'dropzone'];
+    $vars = ['container_guid' => $entity->getGUID(), 'subtype' => GalleryItem::SUBTYPE];
     $content .= elgg_view_form('egallery/photos_upload', $form_vars, $vars);
 }
 
-$body = elgg_view_layout('one_column', array(
-    'content' => $content,
-    'title' => $title,
-    'filter' => '',
-    'sidebar' => '',
-));
-
-echo elgg_view_page($title, $body);
+echo elgg_view_page($entity->getDisplayName(), [
+	'content' => $content,
+	'filter_id' => '',
+	'entity' => $entity,
+	'sidebar' => '',
+], 'default', [
+	'entity' => $entity,
+]);
 
 
 

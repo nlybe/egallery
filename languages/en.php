@@ -50,7 +50,7 @@ return [
     'egallery:item:url' => "Image Source", 
 
     // status messages
-    'egallery:invalid' => 'Invalid entity',
+    'egallery:invalid' => 'Invalid entity or invalid permissions',
     'egallery:invalid_access' => "Invalid access to this action",
     'egallery:onject:disabled' => "Gallery is not enabled for this type of entities",     
     'egallery:item:delete:success' => "Gallery item was successfully deleted", 
@@ -61,6 +61,8 @@ return [
     'egallery:invalid_gallery' => "Invalid gallery entity",
     'egallery:set_cover:success' => "Gallery cover was successfully set", 
     'egallery:set_cover:failed' => "Gallery cover couldn't be set", 
+    'egallery:delete:success' => "Gallery was successfully deleted", 
+    'egallery:delete:failed' => "Gallery cannot be deleted",
     
     // settings
     'egallery:settings:general:title' => 'General Settings',
@@ -74,7 +76,7 @@ return [
     'egallery:settings:gallery_url_include_title' => "Include title on gallery item URL",
     'egallery:settings:gallery_url_include_title:note' => "The function elgg_get_friendly_title doesn't work good with some languages, so it may raise an invalid URI path issue. In this case uncheck this option to exclude the title from gallery item url.",
     
-    'egallery:menu:label' => 'Edit Gallery',
+    'egallery:menu:label' => 'Manage Gallery',
     'egallery:menu:title' => 'Edit %s photo gallery',
     'egallery:photos:view:title' => 'Photos',
     

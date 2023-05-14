@@ -77,7 +77,7 @@ if ($show_icons) {
     if ($file->canDelete()) {
         $icons .= elgg_view('output/url', [
             'name' => 'delete',
-            'href' => "action/egallery/gallery_item_del?guid={$file->getGUID()}",
+            'href' => "action/egallery/gallery_item_delete?guid={$file->getGUID()}",
             'title' => elgg_echo('delete:this'),
             'text' => elgg_view_icon('remove'),
             'confirm' => elgg_echo('deleteconfirm'),

@@ -26,18 +26,28 @@ return [
             'type' => 'object',
             'subtype' => 'entity_gallery',
             'class' => 'EntityGallery',
-            'searchable' => true,
+            'capabilities' => [
+				'commentable' => true,
+				'searchable' => true,
+				'likable' => true,
+			],
         ],
         [
             'type' => 'object',
             'subtype' => 'gallery_item',
             'class' => 'GalleryItem',
             'searchable' => false,
+            // 'capabilities' => [
+			// 	'commentable' => true,
+			// 	'searchable' => true,
+			// 	'likable' => true,
+			// ],
         ]
     ],
 	'actions' => [
         'egallery/gallery_edit' => [],
-        'egallery/gallery_item_del' => [],
+        'egallery/gallery_delete' => [],
+		'egallery/gallery_item_delete' => [],
         'egallery/get_latest_item' => [],
         'egallery/gallery_set_cover' => [],
         'egallery/gallery_item_edit' => [],
@@ -82,6 +92,11 @@ return [
 		'view_vars' => [
 			'object/elements/full' => [
 				'egallery_filter_full_view_vars' => [],
+			],
+		],
+		'prepare' => [
+			'menu:title:object:entity_gallery' => [
+				'egallery_title_menu_setup' => [],
 			],
 		],
 	],

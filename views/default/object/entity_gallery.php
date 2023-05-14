@@ -45,30 +45,18 @@ else {
 // $vars['owner_url'] = "egallery/owner/$owner->username";
 
 if ($full && !elgg_in_context('gallery')) {
-    if ($entity->description) {
-        $body = elgg_format_element('div', ['class' => 'desc'], $entity->description); 
-    }
-    else {
-        $body = elgg_format_element('div', ['class' => 'desc'], '&nbsp;'); 
-    }
-
+    $body = elgg_format_element('div', ['class' => 'desc'], $entity->description?$entity->description:'&nbsp;'); 
     $params = [
         'icon' => $owner_icon,
         'show_summary' => true,
-        'body' => elgg_format_element('div', ['class' => 'elgg-image-block clearfix'], $body), 
-        'show_navigation' => false,
+        // 'body' => elgg_format_element('div', ['class' => 'elgg-image-block clearfix'], $body), 
+        'body' => $body, 
+        'show_navigation' => true,
     ];
     $params = $params + $vars;
 
     echo elgg_view('object/elements/full', $params);
     return;
-
-    // echo elgg_view('object/elements/full', array(
-    //     'entity' => $entity,
-    //     'icon' => $owner_icon,
-    //     'summary' => $summary,
-    //     'body' => $body,
-    // ));
 } 
 else {
     $params = [

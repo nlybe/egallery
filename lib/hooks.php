@@ -14,11 +14,11 @@ use Egallery\EgalleryOptions;
 function egallery_entity_menu_setup(\Elgg\Hook $hook) {
     $return = $hook->getValue();
     $entity = $hook->getEntityParam();
-    if (!$entity instanceof ElggEntity) {
+    if (!$entity instanceof \ElggEntity) {
         return false;
     }
     
-    $sub = ($entity instanceof ElggEntity)?$entity->getSubtype():'';
+    $sub = ($entity instanceof \ElggEntity)?$entity->getSubtype():'';
     if (EgalleryOptions::isEntityTypeGalleryEnabled($sub) && $entity->canEdit()) {
         $options = [
             'name' => "egallery_{$sub}",
@@ -38,6 +38,19 @@ function egallery_entity_menu_setup(\Elgg\Hook $hook) {
         }
         
         $return[] = ElggMenuItem::factory($options);
+    }
+
+    if ($entity instanceof \EntityGallery) {
+        $return[] = ElggMenuItem::factory([
+            'name' => 'delete',
+            'icon' => 'delete',
+            'text' => elgg_echo('delete'),
+            'href' => elgg_generate_action_url('egallery/gallery_delete', [
+                'guid' => $entity->guid,
+            ]),
+            'confirm' => true,
+            'priority' => 900,
+        ]);
     }
         
     return $return;
@@ -135,3 +148,71 @@ function egallery_filter_full_view_vars(\Elgg\Hook $hook) {
 
     return $return;
 }
+
+ /**
+ * Update gallery entity title menu
+ * 
+ * @param \Elgg\Hook $hook
+ */ 
+function egallery_title_menu_setup(\Elgg\Hook $hook) {
+    $entity = $hook->getEntityParam();
+    if (!$entity instanceof \EntityGallery) {
+        return;
+    }
+    
+    if (!$entity->canEdit()) {
+        return;
+    }
+    
+    $result = $hook->getValue();
+    foreach ($result->all() as $section_key => $section) {
+        foreach ($section->getItems() as $item_key => $item) {
+            if ($item->getName() == 'edit') {
+                $item->addLinkClass('elgg-lightbox');
+            }
+        }
+    }
+
+    return $return;
+}
+
+//  /**
+//  * Update gallery entity delete item menu
+//  * 
+//  * @param \Elgg\Hook $hook
+//  */ 
+// function egallery_menu_delete_setup(\Elgg\Hook $hook) {
+//     error_log("aaaaaaaaaaaaaaaaaa");
+//     $entity = $hook->getEntityParam();
+//     if (!$entity instanceof \EntityGallery) {
+//         return;
+//     }
+    
+//     if (!$entity->canEdit()) {
+//         return;
+//     }
+
+//     $return = $hook->getValue();    
+//     // $return[] = ElggMenuItem::factory([
+//     //     'name' => 'edit',
+//     //     'icon' => 'edit',
+//     //     'text' => elgg_echo('edit'),
+//     //     'href' => elgg_generate_url('edit:access_collection:friends', [
+//     //         'collection_id' => $collection->id,
+//     //     ]),
+//     //     'priority' => 500,
+//     // ]);
+
+//     $return[] = ElggMenuItem::factory([
+//         'name' => 'delete',
+//         'icon' => 'delete',
+//         'text' => elgg_echo('delete'),
+//         'href' => elgg_generate_action_url('egallery/gallery_del', [
+//             'collection_id' => $collection->id,
+//         ]),
+//         'confirm' => true,
+//         'priority' => 900,
+//     ]);
+
+//     return $return;
+// }
