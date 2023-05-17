@@ -14,7 +14,15 @@ if (!$egallery instanceof \EntityGallery) {
     return;
 }
 
-$images = $egallery->getGalleryImages();
+$images = elgg_extract('images', $vars, '');
+if (!$images) {
+    $images = $egallery->getGalleryImages();
+}
+
+if (!$images) {
+    return;
+}
+
 $cover = $egallery->getGalleryCoverImage();
 
 // if (isset($vars['gallery_view']) && $vars['gallery_view'] = 'all') {

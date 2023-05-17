@@ -20,10 +20,11 @@ composer require nlybe/egallery
 
 - FIXED - Fix gallery url for greek (settings)
 - DONE - Option to delete gallery (and photos)
+- DONE - Do not display gallery if empty
+- Re-enable the gallery cover feature
+- Display my galleries
+- Add widget for my galleries
 - Add photos sorting option
 - Import from tidypics
-- Display my galleries
 - Add new gallery creation to the river
-- Add widget for my galleries
 - Add mass photos deletion
-- Do not display gallery if empty

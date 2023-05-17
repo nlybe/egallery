@@ -37,14 +37,12 @@ class EntityGallery extends ElggObject {
      * @return type
      */
     public function getGalleryImages($limit = 0) {
-        // $ia = elgg_set_ignore_access(true);
-        $images = elgg_get_entities(array(
+        $images = elgg_get_entities([
             'type' => 'object',
             'subtype' => GalleryItem::SUBTYPE,
             'container_guid' => $this->guid,
             'limit' => $limit,
-        ));
-        // elgg_set_ignore_access($ia);
+        ]);
         
         return $images;
     }
@@ -83,13 +81,12 @@ class EntityGallery extends ElggObject {
             return false;
         }
         
-        $options = array(
+        $count = elgg_get_entities([
             'type' => 'object',
             'subtype' => self::SUBTYPE,
             'container_guid' => $container->getGUID(),
             'count' => true,
-        );     
-        $count = elgg_get_entities($options);
+        ]);
         
         if ($count > 0) {
             return true;
@@ -111,14 +108,13 @@ class EntityGallery extends ElggObject {
             return false;
         }
         
-        $options = array(
+        $galleries = elgg_get_entities([
             'type' => 'object',
             'subtype' => self::SUBTYPE,
             'container_guid' => $container->getGUID(),
             'order_by' => 'e.time_created ASC', // get the first one
             'limit' => $limit,
-        );     
-        $galleries = elgg_get_entities($options);
+        ]);
         
         return (empty($galleries)) ? false : $galleries[0];
     }
