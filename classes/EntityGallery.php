@@ -56,7 +56,6 @@ class EntityGallery extends ElggObject {
     public function getGalleryCoverImage() {
         $cover_image = get_entity($this->cover_guid);
         
-        // if (elgg_instanceof($cover_image, 'object', GalleryItem::SUBTYPE)) {
         if ($cover_image instanceof \GalleryItem) {
             return $cover_image;
         }

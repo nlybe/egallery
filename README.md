@@ -22,7 +22,7 @@ composer require nlybe/egallery
 - DONE - Option to delete gallery (and photos)
 - DONE - Do not display gallery if empty
 - DONE - Display my galleries
-- Re-enable the gallery cover feature
+- FIXED - the gallery cover feature
 - Add widget for my galleries
 - Add photos sorting option
 - Import from tidypics

@@ -50,19 +50,18 @@ if ($show_url && EgalleryOptions::displayImageURL() && $file->hasValidURL()) {
 if ($show_icons) {
     if ($file->canEdit()) {
         $icons .= elgg_view('output/url', [
+            'name' => 'set_cover',
+            'href' => elgg_normalize_url("action/egallery/gallery_set_cover?item={$file->getGUID()}"),
+            'title' => elgg_echo('egallery:item:set_cover'),
+            'text' => elgg_view_icon('image'),
+            'is_action' => true
+        ]);
+        $icons .= elgg_view('output/url', [
             'name' => 'edit',
             'href' => elgg_normalize_url("egallery/item/edit/{$file->getGUID()}"),
             'title' => elgg_echo('egallery:item:edit'),
             'text' => elgg_view_icon('edit'),
             'class' => 'elgg-lightbox',
-        ]);
-
-        $icons .= elgg_view('output/url', [
-            'name' => 'set_cover',
-            'href' => elgg_normalize_url("action/egallery/gallery_set_cover?item={$file->getGUID()}"),
-            'title' => elgg_echo('egallery:item:set_cover'),
-            'text' => elgg_view_icon('picture-o'),
-            'is_action' => true
         ]);
     }
 

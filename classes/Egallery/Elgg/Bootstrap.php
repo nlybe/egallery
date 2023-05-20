@@ -26,9 +26,7 @@ class Bootstrap extends DefaultPluginBootstrap {
 	 */
 	protected function initViews() {
 
-		// extend css
 		elgg_extend_view('css/elgg', 'egallery/egallery.css');
-
 		
 		// set cover sizes
 		elgg_set_config('gallery_item_sizes', [
