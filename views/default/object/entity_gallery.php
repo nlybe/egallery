@@ -13,6 +13,7 @@ if (!$entity) {
 }
 
 $owner = $entity->getOwnerEntity();
+$container = $entity->getContainerEntity();
 
 // $owner_icon = elgg_view_entity_icon($owner, 'small');
 if ($full) {
@@ -42,7 +43,19 @@ else {
         $owner_icon = elgg_format_element('div', ['class' => 'elgg-showcase-screenshot-cover'], $owner_icon);
     }
 }
-// $vars['owner_url'] = "egallery/owner/$owner->username";
+
+
+$imprint = [];
+$imprint[] = [
+    // 'icon_name' => 'circle-arrow-up', 
+    'icon_name' => 'arrow-up', 
+    'content' => elgg_view('output/url', [
+        // 'class' => 'elgg-showcase-screenshot elgg-photo '.$item_class,
+        'href' => $container->getURL(),
+        'title' => elgg_echo('egallery:add:value', [$container->getDisplayName()]),
+        'text' => $container->getDisplayName(),
+    ])
+];
 
 if ($full && !elgg_in_context('gallery')) {
     $body = elgg_format_element('div', ['class' => 'desc'], $entity->description?$entity->description:'&nbsp;'); 
@@ -52,6 +65,7 @@ if ($full && !elgg_in_context('gallery')) {
         // 'body' => elgg_format_element('div', ['class' => 'elgg-image-block clearfix'], $body), 
         'body' => $body, 
         'show_navigation' => true,
+        'imprint' => $imprint,
     ];
     $params = $params + $vars;
 
@@ -62,6 +76,7 @@ else {
     $params = [
         'content' => elgg_get_excerpt($entity->description),
         'icon' => false,
+        'imprint' => $imprint,
     ];
     $params = $params + $vars;
     $body = elgg_view('object/elements/summary', $params);
@@ -69,3 +84,4 @@ else {
     echo elgg_view_image_block($owner_icon, $body);
 
 }
+

@@ -72,6 +72,10 @@ return [
 			'path' => '/egallery/item/edit/{guid}',
 			'resource' => 'egallery/gallery_item_edit',
 		],
+		'collection:object:entity_gallery:owner' => [
+			'path' => '/egallery/owner/{username}',
+			'resource' => 'egallery/gallery_owner',
+		],
     ],
 	'hooks' => [
 		'entity:url' => [
@@ -82,6 +86,9 @@ return [
 		'register' => [
 			'menu:entity' => [
 				'egallery_entity_menu_setup' => [],
+			],
+			'menu:owner_block' => [
+				'egallery_gallery_user_menu' => [],
 			],
 		],
 		'upload:after' => [

@@ -40,7 +40,7 @@ function egallery_entity_menu_setup(\Elgg\Hook $hook) {
         $return[] = ElggMenuItem::factory($options);
     }
 
-    if ($entity instanceof \EntityGallery) {
+    if ($entity instanceof \EntityGallery && $entity->canEdit()) {
         $return[] = ElggMenuItem::factory([
             'name' => 'delete',
             'icon' => 'delete',
@@ -53,6 +53,30 @@ function egallery_entity_menu_setup(\Elgg\Hook $hook) {
         ]);
     }
         
+    return $return;
+}
+
+ /**
+ * Register gallery item to user menu
+ * 
+ * @param \Elgg\Hook $hook
+ */ 
+function egallery_gallery_user_menu(\Elgg\Hook $hook) {
+    $entity = $hook->getEntityParam();
+    if (!$entity instanceof \ElggUser) {
+        return;
+    }
+    
+    $return = $hook->getValue();
+    
+    $return[] = \ElggMenuItem::factory([
+        'name' => 'entity_galley',
+        'text' => elgg_echo('collection:object:entity_gallery'),
+        'href' => elgg_generate_url('collection:object:entity_gallery:owner', [
+            'username' => $entity->username,
+        ]),
+    ]);
+            
     return $return;
 }
 

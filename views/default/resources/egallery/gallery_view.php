@@ -21,7 +21,9 @@ if (!EgalleryOptions::isEntityTypeGalleryEnabled($sub)) {
     forward(REFERRER);
 }
 
-elgg_push_breadcrumb(elgg_echo('egallery:breadcrumb:label', [$container->title]), $container->getURL());
+$owner = $entity->getOwnerEntity();
+// elgg_push_breadcrumb(elgg_echo('egallery:breadcrumb:label', [$container->title]), $container->getURL());
+elgg_push_collection_breadcrumbs('object', 'entity_gallery', $owner);
 elgg_push_breadcrumb($entity->getDisplayName());
 
 $content = elgg_view_entity($entity, [

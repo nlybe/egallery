@@ -33,8 +33,7 @@ echo elgg_view_field([
 ]);
 
 echo elgg_view_field([
-    // '#type' => 'plaintext',
-    '#type' => 'hidden',
+    '#type' => 'plaintext',
     'name' => 'description',
     'value' => $description,
     'rows' => 3,
@@ -43,8 +42,7 @@ echo elgg_view_field([
 ]);
 
 echo elgg_view_field([
-    // '#type' => 'tags',
-    '#type' => 'hidden',
+    '#type' => 'tags',
     'name' => 'tags',
     'value' => $tags,
     '#label' => elgg_echo('egallery:add:tags'),
@@ -53,15 +51,14 @@ echo elgg_view_field([
 
 echo elgg_view_field([
     '#type' => 'access',
-    // '#type' => 'hidden',
     'name' => 'access_id',
     'value' => $access_id,
     '#label' => elgg_echo('access'),
 ]); 
 
 echo elgg_view_field([
-    // '#type' => 'dropdown',
-    '#type' => 'hidden',
+    '#type' => 'dropdown',
+    // '#type' => 'hidden',
     'id' => 'entity_gallery_comments_on',
     'name' => 'comments_on',
     'value' => elgg_extract('comments_on', $vars, ''),

@@ -10,12 +10,15 @@ return [
     'collection:object:entity_gallery' => 'Galleries',
     'collection:object:gallery_item' => 'Gallery Photos',
     'collection:object:about' => 'About', // missing from Elgg
+    'entity_gallery:none' => 'No galleries',
+    'collection:object:entity_gallery:user' => '%s\'s Galleries',
+    'collection:object:entity_gallery:mine' => 'My galleries',
 
     // gallery form
     'egallery:add:requiredfields' => 'Fields with an asterisk (*) are required',
     'egallery:add:title' => "Title",
     'egallery:add:title:help' => "Set the title of gallery",
-    'egallery:add:value' => "Gallery of %s",
+    'egallery:add:value' => "Gallery of '%s'",
     'egallery:add:description' => "Description",
     'egallery:add:description:help' => "Enter a description for this gallery.",
     'egallery:add:tags' => "Tags",
