@@ -80,6 +80,10 @@ return [
 			'path' => '/egallery',
 			'resource' => 'egallery/gallery_all',
 		],
+		'collection:object:entity_gallery:friends' => [
+			'path' => '/egallery/friends/{username}',
+			'resource' => 'egallery/gallery_friends',
+		],
     ],
 	'hooks' => [
 		'entity:url' => [

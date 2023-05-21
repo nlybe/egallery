@@ -14,6 +14,7 @@ return [
     'entity_gallery:none' => 'No galleries',
     'collection:object:entity_gallery:owner' => '%s\'s Galleries',
     'collection:object:entity_gallery:mine' => 'My galleries',
+    'collection:object:entity_gallery:friends' => 'Friends\' galleries',
     'collection:object:entity_gallery:all' => 'Galleries',
     'entity_gallery:menu' => 'Galleries',
 
