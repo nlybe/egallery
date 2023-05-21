@@ -23,7 +23,7 @@ composer require nlybe/egallery
 - DONE - Do not display gallery if empty
 - DONE - Display my galleries
 - FIXED - the gallery cover feature
-- Add widget for my galleries
+- DONE - Add widget for my galleries
 - Add new gallery creation to the river
 - Import from tidypics
 - Add photos sorting option

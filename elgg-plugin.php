@@ -76,6 +76,10 @@ return [
 			'path' => '/egallery/owner/{username}',
 			'resource' => 'egallery/gallery_owner',
 		],
+		'collection:object:entity_gallery:all' => [
+			'path' => '/egallery',
+			'resource' => 'egallery/all',
+		],
     ],
 	'hooks' => [
 		'entity:url' => [
@@ -113,8 +117,8 @@ return [
 		'gallery_url_include_title' => 'yes',
 	],
 	'widgets' => [
-		'egallery' => [
-			'context' => ['profile'],
+		'entity_gallery' => [
+			'context' => ['profile', 'dashboard'],
 		],
 	],
 ];

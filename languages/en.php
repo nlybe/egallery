@@ -7,6 +7,7 @@
 return [
 
     'egallery' => 'Attach photos on Elgg Entities',
+    'entity_gallery' => 'Galleries',
     'collection:object:entity_gallery' => 'Galleries',
     'collection:object:gallery_item' => 'Gallery Photos',
     'collection:object:about' => 'About', // missing from Elgg
@@ -69,6 +70,7 @@ return [
 
     // widgets
     'egallery:galleries:more' => 'More galleries',
+    'egallery:numbertodisplay' => 'Number of galleries to display',
     
     // settings
     'egallery:settings:general:title' => 'General Settings',
