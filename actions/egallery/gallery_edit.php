@@ -28,12 +28,7 @@ if (!$title) {
     return elgg_error_response(elgg_echo('egallery:save:missing_title'));
 }
 
-// check whether this is a new object or an edit
 $new_entity = true;
-if ($guid > 0) {
-    $new_entity = false;
-}
-
 if ($guid == 0) {
     $entity = new EntityGallery;
     $entity->container_guid = $container_guid;
@@ -44,6 +39,7 @@ if ($guid == 0) {
         $title = EntityGallery::setGalleryTitle($container);
     }        
 } else {
+    $new_entity = false;
     $entity = get_entity($guid);
     if (!$entity->canEdit()) {
         system_message(elgg_echo('egallery:invalid_access'));
@@ -67,6 +63,15 @@ $entity->access_id = $access_id;
 
 if ($entity->save()) {
     elgg_clear_sticky_form('entity_gallery');
+
+    //add to river only if new
+    if ($new_entity) {
+        elgg_create_river_item([
+            'view' => 'river/object/entity_gallery/create',
+            'action_type' => 'create',
+            'object_guid' => $entity->guid,
+        ]);
+    }
     return elgg_ok_response('', elgg_echo('egallery:save:success'), $entity->getURL());
 } 
 else {
