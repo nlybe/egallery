@@ -142,46 +142,28 @@ class EntityGallery extends ElggObject {
         
         return true;
     }
-    
-    // /**
-    //  * Creates portfolio gallery for the given container
-    //  * 
-    //  * @param ElggEntity $container
-    //  * @return boolean|\PortfolioGallery
-    //  */
-    // public static function createPortfolioGallery($container) {
-    //     if (!$container instanceof ElggEntity) {
-    //         return false;
-    //     }
-        
-    //     if (!elgg_is_logged_in()) {
-    //         return false;
-    //     }
 
-    //     try {
-    //         $access_level = get_default_access();
-    //         if ($container instanceof \ElggGroup) {
-    //             $access_level = $container->group_acl;
-    //         }
-            
-    //         $p_gallery = new PortfolioGallery();
-    //         $p_gallery->title = self::setPortfolioGalleryTitle($container);
-    //         $p_gallery->access_id = $access_level;
-    //         $p_gallery->owner_guid = elgg_get_logged_in_user_entity()->getGUID();
-    //         $p_gallery->container_guid = $container->guid;
-    //         $p_gallery->comments_on = On; // by default set comments off
+	/**
+	 * Can a user comment on the gallery?
+	 *
+	 * @see ElggObject::canComment()
+	 *
+	 * @param int  $user_guid User guid (default is logged in user)
+	 * @param bool $default   Default permission
+	 *
+	 * @return bool
+	 */
+	public function canComment($user_guid = 0, $default = null) {
+		$result = parent::canComment($user_guid, $default);
+		if (!$result) {
+			return $result;
+		}
 
-    //         $ia = elgg_set_ignore_access(true);
-    //         $p_gallery->save();
-    //         elgg_set_ignore_access($ia);
-
-    //         elgg_log("Created portfolio gallery for $container->name [$container->guid]", 'NOTICE');
-    //     } 
-    //     catch (Exception $ex) {
-    //         elgg_log($ex->getMessage(), 'ERROR');
-    //     }
-
-    //     return $p_gallery;
-    // }
+		if ($this->comments_on === 'Off') {
+			return false;
+		}
+		
+		return true;
+	}
    
 }

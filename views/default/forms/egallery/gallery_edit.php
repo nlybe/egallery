@@ -58,10 +58,9 @@ echo elgg_view_field([
 
 echo elgg_view_field([
     '#type' => 'dropdown',
-    // '#type' => 'hidden',
     'id' => 'entity_gallery_comments_on',
     'name' => 'comments_on',
-    'value' => elgg_extract('comments_on', $vars, ''),
+    'value' => elgg_extract('comments_on', $vars, 'On'),
     'options_values' => array('On' => elgg_echo('on'), 'Off' => elgg_echo('off')),
     '#label' => elgg_echo('comments'),
 ]);

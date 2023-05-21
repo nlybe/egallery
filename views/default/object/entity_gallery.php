@@ -47,10 +47,8 @@ else {
 
 $imprint = [];
 $imprint[] = [
-    // 'icon_name' => 'circle-arrow-up', 
     'icon_name' => 'arrow-up', 
     'content' => elgg_view('output/url', [
-        // 'class' => 'elgg-showcase-screenshot elgg-photo '.$item_class,
         'href' => $container->getURL(),
         'title' => elgg_echo('egallery:add:value', [$container->getDisplayName()]),
         'text' => $container->getDisplayName(),
@@ -62,7 +60,6 @@ if ($full && !elgg_in_context('gallery')) {
     $params = [
         'icon' => $owner_icon,
         'show_summary' => true,
-        // 'body' => elgg_format_element('div', ['class' => 'elgg-image-block clearfix'], $body), 
         'body' => $body, 
         'show_navigation' => true,
         'imprint' => $imprint,
@@ -70,6 +67,19 @@ if ($full && !elgg_in_context('gallery')) {
     $params = $params + $vars;
 
     echo elgg_view('object/elements/full', $params);
+    echo elgg_view('egallery/gallery_images', $vars);
+
+    if ($container->canWriteToContainer(0, 'object', EntityGallery::SUBTYPE)) {
+        $form_vars = ['name' => 'photos_upload', 'enctype' => 'multipart/form-data', 'class' => 'dropzone'];
+        echo elgg_view_form('egallery/photos_upload', $form_vars, [
+            'container_guid' => $entity->getGUID(), 
+            'subtype' => GalleryItem::SUBTYPE,
+        ]);
+    }
+
+    $params['show_responses'] = true;
+    echo elgg_view('object/elements/full/responses', $params);
+    
     return;
 } 
 else {
