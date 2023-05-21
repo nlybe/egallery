@@ -112,5 +112,10 @@ return [
         'show_url' => true,
 		'gallery_url_include_title' => 'yes',
 	],
+	'widgets' => [
+		'egallery' => [
+			'context' => ['profile'],
+		],
+	],
 ];
 

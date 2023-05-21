@@ -16,7 +16,7 @@ if (!$user) {
 elgg_push_collection_breadcrumbs('object', 'entity_gallery', $user);
 
 $vars['entity'] = $user;
-$title = $user->guid == elgg_get_logged_in_user_guid() ? elgg_echo('collection:object:entity_gallery:mine') : elgg_echo('collection:object:entity_gallery:user', [$user->name]);
+$title = $user->guid == elgg_get_logged_in_user_guid() ? elgg_echo('collection:object:entity_gallery:mine') : elgg_echo('collection:object:entity_gallery:owner', [$user->name]);
 echo elgg_view_page($title, [
 	// 'filter_value' => $user->guid == elgg_get_logged_in_user_guid() ? 'mine' : 'none',
 	'filter' => '',

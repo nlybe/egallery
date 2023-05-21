@@ -11,7 +11,7 @@ return [
     'collection:object:gallery_item' => 'Gallery Photos',
     'collection:object:about' => 'About', // missing from Elgg
     'entity_gallery:none' => 'No galleries',
-    'collection:object:entity_gallery:user' => '%s\'s Galleries',
+    'collection:object:entity_gallery:owner' => '%s\'s Galleries',
     'collection:object:entity_gallery:mine' => 'My galleries',
 
     // gallery form
@@ -66,6 +66,9 @@ return [
     'egallery:set_cover:failed' => "Gallery cover couldn't be set", 
     'egallery:delete:success' => "Gallery was successfully deleted", 
     'egallery:delete:failed' => "Gallery cannot be deleted",
+
+    // widgets
+    'egallery:galleries:more' => 'More galleries',
     
     // settings
     'egallery:settings:general:title' => 'General Settings',
