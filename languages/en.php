@@ -14,6 +14,8 @@ return [
     'entity_gallery:none' => 'No galleries',
     'collection:object:entity_gallery:owner' => '%s\'s Galleries',
     'collection:object:entity_gallery:mine' => 'My galleries',
+    'collection:object:entity_gallery:all' => 'Galleries',
+    'entity_gallery:menu' => 'Galleries',
 
     // gallery form
     'egallery:add:requiredfields' => 'Fields with an asterisk (*) are required',
@@ -79,6 +81,8 @@ return [
     'egallery:settings:photos:subtype' => ' (%s)',
     'egallery:settings:show_description' => 'Include Image Description',
     'egallery:settings:show_description:note' => 'Check this if want to include a description for each photo',
+    'egallery:settings:gallery_site_menu_item' => 'Add galleries menu item to site menu',
+    'egallery:settings:gallery_site_menu_item:note' => 'Check this if want to add Galleries to site menu',
     'egallery:settings:show_url' => 'Include Image Source URL',
     'egallery:settings:show_url:note' => 'Check this if want to include a source url for each photo',
     'egallery:settings:gallery_url_include_title' => "Include title on gallery item URL",

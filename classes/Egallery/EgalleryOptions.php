@@ -48,7 +48,7 @@ class EgalleryOptions {
      */
     Public Static function displayImageDescription() {
         $show_description = self::getParams('show_description');
-        if ($show_description === 'on') {
+        if ($show_description === 'yes') {
             return true;
         } 
 
@@ -62,7 +62,7 @@ class EgalleryOptions {
      */
     Public Static function displayImageURL() {
         $show_url = self::getParams('show_url');
-        if ($show_url === 'on') {
+        if ($show_url === 'yes') {
             return true;
         } 
 
@@ -82,6 +82,21 @@ class EgalleryOptions {
 
         return false;
     }
+    
+    /**
+     * Check if add galleries menu item to site menu
+     * 
+     * @return boolean
+     */
+    Public Static function addGallerySiteMenuItem() {
+        $include_title = self::getParams('gallery_site_menu_item');
+        if ($include_title === 'yes') {
+            return true;
+        } 
+
+        return false;
+    }
+
     
 	// /**
 	//  * Make the correct folder structure for an owner

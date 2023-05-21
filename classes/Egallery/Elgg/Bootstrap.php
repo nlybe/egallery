@@ -7,6 +7,7 @@
 namespace Egallery\Elgg;
 
 use Elgg\DefaultPluginBootstrap;
+use Egallery\EgalleryOptions;
 
 class Bootstrap extends DefaultPluginBootstrap {
 	
@@ -27,6 +28,16 @@ class Bootstrap extends DefaultPluginBootstrap {
 	protected function initViews() {
 
 		elgg_extend_view('css/elgg', 'egallery/egallery.css');
+
+		// add a site navigation item
+		if (EgalleryOptions::addGallerySiteMenuItem()) {			
+			elgg_register_menu_item('site', [
+				'name' => 'elgg-galleries',
+				'icon' => 'images',
+				'text' => elgg_echo('entity_gallery:menu'),
+				'href' => elgg_generate_url('collection:object:entity_gallery:all'),
+			]); 
+		}
 		
 		// set cover sizes
 		elgg_set_config('gallery_item_sizes', [

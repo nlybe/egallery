@@ -24,7 +24,11 @@ composer require nlybe/egallery
 - DONE - Display my galleries
 - FIXED - the gallery cover feature
 - DONE - Add widget for my galleries
+- DONE - Add menu item for all galleries
+- Add friend's galleries
+- Fix gallery comments
 - Add new gallery creation to the river
+- Add rss
 - Import from tidypics
 - Add photos sorting option
 - Add mass photos deletion

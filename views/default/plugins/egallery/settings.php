@@ -11,11 +11,26 @@ $entity = elgg_extract('entity', $vars);
 
 echo elgg_format_element('h3', [], elgg_echo('egallery:settings:general:title'));
 
+// set if add galleries menu item to site menu
+echo elgg_view_field([
+    'id' => 'gallery_site_menu_item',
+    '#type' => 'checkbox',
+    'name' => 'params[gallery_site_menu_item]',
+    'switch' => true,
+    'value' => 'yes',
+    'checked' => ($plugin->gallery_site_menu_item === 'yes'), 
+    '#label' => elgg_echo('egallery:settings:gallery_site_menu_item'),
+    '#help' => elgg_echo('egallery:settings:gallery_site_menu_item:note'),
+]);
+
 // set if display short description for each photo
 echo elgg_view_field([
     'id' => 'show_description',
     '#type' => 'checkbox',
     'name' => 'params[show_description]',
+    'switch' => true,
+    'value' => 'yes',
+    'checked' => ($plugin->show_description === 'yes'), 
     '#label' => elgg_echo('egallery:settings:show_description'),
     '#help' => elgg_echo('egallery:settings:show_description:note'),
     'checked' => ($plugin->show_description || !isset($plugin->show_description) ? true : false),
@@ -26,12 +41,15 @@ echo elgg_view_field([
     'id' => 'show_url',
     '#type' => 'checkbox',
     'name' => 'params[show_url]',
+    'switch' => true,
+    'value' => 'yes',
+    'checked' => ($plugin->show_url === 'yes'), 
     '#label' => elgg_echo('egallery:settings:show_url'),
     '#help' => elgg_echo('egallery:settings:show_url:note'),
     'checked' => ($plugin->show_url || !isset($plugin->show_url) ? true : false),
 ]);
 
-// set include title on news item url
+// set if include title on news item url
 echo elgg_view_field([
     'id' => 'gallery_url_include_title',
     '#type' => 'checkbox',

@@ -78,7 +78,7 @@ return [
 		],
 		'collection:object:entity_gallery:all' => [
 			'path' => '/egallery',
-			'resource' => 'egallery/all',
+			'resource' => 'egallery/gallery_all',
 		],
     ],
 	'hooks' => [
@@ -112,9 +112,10 @@ return [
 		],
 	],
     'settings' => [
-        'show_description' => false,
-        'show_url' => true,
+        'show_description' => 'no',
+        'show_url' => 'yes',
 		'gallery_url_include_title' => 'yes',
+		'gallery_site_menu_item' => 'yes',
 	],
 	'widgets' => [
 		'entity_gallery' => [
