@@ -28,7 +28,7 @@ composer require nlybe/egallery
 - DONE - Add friend's galleries
 - FIXED - Fix gallery comments
 - DONE - added new gallery creation to the river
-- Add rss
+- DONE - Added rss for galleries
 - Import from tidypics
 - Add photos sorting option
 - Add mass photos deletion
