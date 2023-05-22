@@ -61,11 +61,12 @@ if ($full && !elgg_in_context('gallery')) {
         'show_summary' => true,
         'body' => $body, 
         'show_navigation' => true,
+        'title' => false,
         'imprint' => $imprint,
     ];
     $params = $params + $vars;
     
-    echo elgg_get_excerpt($entity->getDisplayName(), 100);
+    // echo elgg_get_excerpt($entity->getDisplayName(), 100);
     echo elgg_view('object/elements/full', $params);
     echo elgg_view('egallery/gallery_images', $vars);
 
