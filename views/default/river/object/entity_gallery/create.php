@@ -1,6 +1,7 @@
 <?php
 /**
- * New bookmarks river entry
+ * Elgg Entities Gallery
+ * @package egallery 
  */
 
 $item = elgg_extract('item', $vars);
@@ -9,7 +10,14 @@ if (!$item instanceof ElggRiverItem) {
 }
 
 $object = $item->getObjectEntity();
-$vars['message'] = elgg_get_excerpt($object->description);
-// $vars['attachments'] = elgg_view('output/url', ['href' => $object->address]);
+$container = $object->getContainerEntity();
+$vars['message'] = elgg_echo("river:object:entity_gallery:container", [
+	elgg_view('output/url', [
+		'href' => $container->getURL(),
+		'title' => elgg_echo('egallery:add:value', [$container->getDisplayName()]),
+		'text' => $container->getDisplayName(),
+	])
+]);
+$vars['message'] .= elgg_get_excerpt($object->description);
 
 echo elgg_view('river/elements/layout', $vars);

@@ -17,7 +17,7 @@ else {
     );
 
     // create form
-    $form_vars = array('name' => 'egallery_item', 'enctype' => 'multipart/form-data');
+    $form_vars = ['name' => 'egallery_item', 'enctype' => 'multipart/form-data'];
     $vars = entity_gallery_item_prepare_form_vars($file);
     $content = elgg_view_form('egallery/gallery_item_edit', $form_vars, $vars);
 

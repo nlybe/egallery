@@ -28,7 +28,7 @@ if (!$title) {
     return elgg_error_response(elgg_echo('egallery:save:missing_title'));
 }
 
-$new_entity = true;
+$new_entity = false;
 if ($guid == 0) {
     $entity = new EntityGallery;
     $entity->container_guid = $container_guid;
@@ -37,9 +37,9 @@ if ($guid == 0) {
     if (empty($title)) {
         $container = get_entity($container_guid);
         $title = EntityGallery::setGalleryTitle($container);
-    }        
+    }
+    $new_entity = true;
 } else {
-    $new_entity = false;
     $entity = get_entity($guid);
     if (!$entity->canEdit()) {
         system_message(elgg_echo('egallery:invalid_access'));
@@ -52,11 +52,9 @@ if ($guid == 0) {
     }    
 }
 
-$tagarray = string_to_tag_array($tags);
-
 $entity->title = $title;
 $entity->description = $description;
-$entity->tags = $tagarray;
+$entity->tags = string_to_tag_array($tags);
 $entity->container_guid = $container_guid;
 $entity->comments_on = $comments_on;
 $entity->access_id = $access_id;

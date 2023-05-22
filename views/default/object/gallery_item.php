@@ -28,40 +28,40 @@ if ($full && !elgg_in_context('gallery')) {
     
     $body .= '<ul class="elgg-gallery elgg-egallery-gallery elgg-showcase-screenshots">';
     $body .= elgg_format_element('li', ['id' => 'pgi_'.$entity->getGUID()], 
-        elgg_view('egallery/gallery_item', array(
+        elgg_view('egallery/gallery_item', [
             'p_gallery_item' => $entity,
             'show_icons' => false,
             'thumb_size' => 'large',
-        ))
+        ])
     );    
     $body .= '</ul>';    
     
     $body .= '</div>';    
 
-    echo elgg_view('object/elements/full', array(
+    echo elgg_view('object/elements/full', [
         'entity' => $entity,
         'icon' => $owner_icon,
         'summary' => $summary,
         'body' => $body,
-    ));
+    ]);
 } 
 else {
     $display_text = $url;
    
     $content .= '<ul class="elgg-gallery elgg-egallery-gallery elgg-showcase-screenshots">';
     $content .= elgg_format_element('li', ['id' => 'pgi_'.$entity->getGUID()], 
-        elgg_view('egallery/gallery_item', array(
+        elgg_view('egallery/gallery_item', [
             'p_gallery_item' => $entity,
             'show_icons' => false,
-        ))
+        ])
     );    
     $content .= '</ul>';
     
-    $params = array(
+    $params = [
         'entity' => $entity,
         'metadata' => $metadata,
         'content' => $content,
-    );
+    ];
     $params = $params + $vars;
     $body = elgg_view('object/elements/summary', $params);
 

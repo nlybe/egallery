@@ -23,10 +23,10 @@ if (!$file instanceof \GalleryItem) {
 
 if ($file instanceof \GalleryItem) {
     $content = elgg_format_element('li', ['id' => 'pgi_'.$file->getGUID()], 
-        elgg_view('egallery/gallery_item', array(
+        elgg_view('egallery/gallery_item', [
             'p_gallery_item' => $file,
             'item_class' => 'cboxElement'
-        ))
+        ])
     );    
 
     $result['error'] = false;

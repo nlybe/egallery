@@ -12,7 +12,7 @@
  */
 function entity_gallery_prepare_form_vars($container = null, $egallery = null) {
     // input names => defaults
-    $values = array(
+    $values = [
         'title' => '',
         'description' => '',
         'cover_guid' => '',
@@ -23,7 +23,7 @@ function entity_gallery_prepare_form_vars($container = null, $egallery = null) {
         'entity' => $egallery,
         'guid' => null,
         'comments_on' => NULL,
-    ); 
+    ];
 
     if ($egallery) {
         foreach (array_keys($values) as $field) {
@@ -54,7 +54,7 @@ function entity_gallery_prepare_form_vars($container = null, $egallery = null) {
 
 function entity_gallery_item_prepare_form_vars($entity = null) {
     // input names => defaults
-    $values = array(
+    $values = [
         'title' => '',
         'description' => '',
         'url' => '',
@@ -65,7 +65,7 @@ function entity_gallery_item_prepare_form_vars($entity = null) {
         'container_guid' => elgg_get_page_owner_guid(),
         'entity' => $entity,
         'guid' => null,
-    ); 
+    ];
 
     if ($entity) {
         foreach (array_keys($values) as $field) {

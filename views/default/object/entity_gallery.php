@@ -15,7 +15,6 @@ if (!$entity) {
 $owner = $entity->getOwnerEntity();
 $container = $entity->getContainerEntity();
 
-// $owner_icon = elgg_view_entity_icon($owner, 'small');
 if ($full) {
     $owner_icon = elgg_view_entity_icon($owner, 'small');
 }
@@ -65,7 +64,8 @@ if ($full && !elgg_in_context('gallery')) {
         'imprint' => $imprint,
     ];
     $params = $params + $vars;
-
+    
+    echo elgg_get_excerpt($entity->getDisplayName(), 100);
     echo elgg_view('object/elements/full', $params);
     echo elgg_view('egallery/gallery_images', $vars);
 
@@ -77,6 +77,7 @@ if ($full && !elgg_in_context('gallery')) {
         ]);
     }
 
+    // finally show the comments
     $params['show_responses'] = true;
     echo elgg_view('object/elements/full/responses', $params);
     
@@ -92,6 +93,5 @@ else {
     $body = elgg_view('object/elements/summary', $params);
     
     echo elgg_view_image_block($owner_icon, $body);
-
 }
 

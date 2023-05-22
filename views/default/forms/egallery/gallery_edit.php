@@ -61,7 +61,7 @@ echo elgg_view_field([
     'id' => 'entity_gallery_comments_on',
     'name' => 'comments_on',
     'value' => elgg_extract('comments_on', $vars, 'On'),
-    'options_values' => array('On' => elgg_echo('on'), 'Off' => elgg_echo('off')),
+    'options_values' => ['On' => elgg_echo('on'), 'Off' => elgg_echo('off')],
     '#label' => elgg_echo('comments'),
 ]);
 
@@ -83,7 +83,6 @@ echo elgg_view_field([
         'value' => $container_guid,
     ]);
 
-    // echo elgg_view('input/submit', array('value' => elgg_echo('edu_publications:add:submit')));
     echo elgg_view_field([
         '#type' => 'submit',
         'value' => elgg_echo('submit')

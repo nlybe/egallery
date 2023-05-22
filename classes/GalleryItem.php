@@ -8,10 +8,10 @@ class GalleryItem extends ElggFile {
 
     const SUBTYPE = "gallery_item";
     
-    protected $meta_defaults = array(
+    protected $meta_defaults = [
         "title"             => NULL,
         "description"       => NULL,
-    );    
+    ];
 
     protected function initializeAttributes() {
         parent::initializeAttributes();

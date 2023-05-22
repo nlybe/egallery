@@ -50,14 +50,6 @@ if (EgalleryOptions::displayImageURL()) {
     ]);
 }
 
-// echo elgg_format_element('div', [], elgg_view_input('text', array(
-//     'name' => 'category',
-//     'value' => $category,
-//     'label' => elgg_echo('egallery:add:category'),
-//     'help' => elgg_echo('egallery:add:category:help'),
-//     'required' => true,
-// )));
-
 echo elgg_view_field([
     '#type' => 'tags',
     'name' => 'tags',
@@ -91,7 +83,6 @@ echo elgg_view_field([
         'value' => $container_guid,
     ]);
 
-    // echo elgg_view('input/submit', array('value' => elgg_echo('edu_publications:add:submit')));
     echo elgg_view_field([
         '#type' => 'submit',
         'value' => elgg_echo('save')

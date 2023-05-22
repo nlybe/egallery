@@ -22,7 +22,7 @@ return [
     'egallery:add:requiredfields' => 'Fields with an asterisk (*) are required',
     'egallery:add:title' => "Title",
     'egallery:add:title:help' => "Set the title of gallery",
-    'egallery:add:value' => "Gallery of '%s'",
+    'egallery:add:value' => "Parent item: '%s'",
     'egallery:add:description' => "Description",
     'egallery:add:description:help' => "Enter a description for this gallery.",
     'egallery:add:tags' => "Tags",
@@ -74,6 +74,11 @@ return [
     // widgets
     'egallery:galleries:more' => 'More galleries',
     'egallery:numbertodisplay' => 'Number of galleries to display',
+
+    // river
+	'river:object:entity_gallery:create' => '%s created a gallery %s',
+    'river:object:entity_gallery:container' => 'Gallery of %s - ',
+	'river:object:entity_gallery:comment' => '%s commented on the gallery %s',
     
     // settings
     'egallery:settings:general:title' => 'General Settings',
