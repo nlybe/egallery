@@ -51,6 +51,17 @@ function egallery_entity_menu_setup(\Elgg\Hook $hook) {
             'confirm' => true,
             'priority' => 900,
         ]);
+
+        $return[] = ElggMenuItem::factory([
+            'name' => 'edit',
+            'icon' => 'edit',
+            'text' => elgg_echo('edit'),
+            'href' => elgg_generate_url('edit:object:entity_gallery', [
+                'guid' => $entity->guid,
+            ]),
+            'priority' => 800,
+            'class' => 'elgg-anchor elgg-menu-content elgg-lightbox',
+        ]);         
     }
         
     return $return;

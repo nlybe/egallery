@@ -21,8 +21,17 @@ if (!EgalleryOptions::isEntityTypeGalleryEnabled($sub)) {
     forward(REFERRER);
 }
 
+if ($entity->canEdit() && EgalleryOptions::isImportFromTidypicsEnabled()) {
+	elgg_register_menu_item('title', [
+		'name' => 'import',
+		'icon' => 'file-import',
+		'href' => elgg_generate_url('import:object:entity_gallery', ['guid' => $entity->guid]),
+		'text' => elgg_echo('egallery:import:tidypics'),
+		'link_class' => 'elgg-button elgg-button-action elgg-lightbox',
+	]);
+}
+
 $owner = $entity->getOwnerEntity();
-// elgg_push_breadcrumb(elgg_echo('egallery:breadcrumb:label', [$container->title]), $container->getURL());
 elgg_push_collection_breadcrumbs('object', 'entity_gallery', $owner);
 elgg_push_breadcrumb($entity->getDisplayName());
 
@@ -38,6 +47,4 @@ echo elgg_view_page($entity->getDisplayName(), [
 ], 'default', [
 	'entity' => $entity,
 ]);
-
-
 

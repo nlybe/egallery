@@ -44,7 +44,7 @@ if ($guid == 0) {
     }    
 }
 
-$tagarray = string_to_tag_array($tags);
+$tagarray = elgg_string_to_array($tags);
 
 $entity->title = $title;
 $entity->description = $description;

@@ -54,7 +54,7 @@ if ($guid == 0) {
 
 $entity->title = $title;
 $entity->description = $description;
-$entity->tags = string_to_tag_array($tags);
+$entity->tags = elgg_string_to_array($tags);
 $entity->container_guid = $container_guid;
 $entity->comments_on = $comments_on;
 $entity->access_id = $access_id;

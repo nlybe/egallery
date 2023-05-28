@@ -96,6 +96,29 @@ class EgalleryOptions {
 
         return false;
     }
+    
+    /**
+     * Check if import from tidypics is enabled
+     * 
+     * @return boolean
+     */
+    Public Static function isImportFromTidypicsEnabled() {
+        if (!elgg_is_active_plugin("tidypics")) {
+            return false;
+        } 
+
+        $import = self::getParams('enable_tidypics_import');
+        if ($import !== 'yes') {
+            return false;
+        } 
+
+        $admin_only = self::getParams('tidypics_import_admin_inly');
+        if ($admin_only === 'yes' && !elgg_is_admin_logged_in()) {
+            return false;
+        }
+        
+        return true;
+    }
 
     
 	// /**

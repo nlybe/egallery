@@ -61,7 +61,8 @@ echo elgg_view_field([
     '#help' => elgg_echo('egallery:settings:gallery_url_include_title:note'),
 ]);
 
-// $entity_stats = get_entity_statistics();
+
+
 $searchable = [];
 $registered = get_registered_entity_types();
 if ($registered) {
@@ -107,3 +108,31 @@ $form_output = elgg_view('elements/forms/field', [
 $title = elgg_format_element('h3', [], elgg_echo('egallery:settings:photos:title'));
 echo elgg_view_module('inline', '', $form_output, ['header' => $title]);
 
+
+
+if (!elgg_is_active_plugin("tidypics")) {
+    $tidypics_output = elgg_format_element('div', ['style' => 'color:red;'], elgg_echo('egallery:settings:tidypics:inactive'));
+}
+// set if enable import from tidypics
+$tidypics_output .= elgg_view_field([
+    'id' => 'enable_tidypics_import',
+    '#type' => 'checkbox',
+    'name' => 'params[enable_tidypics_import]',
+    'switch' => true,
+    'value' => 'yes',
+    'checked' => ($plugin->enable_tidypics_import === 'yes'), 
+    '#label' => elgg_echo('egallery:settings:enable_tidypics_import'),
+    '#help' => elgg_echo('egallery:settings:enable_tidypics_import:note'),
+]);
+// set if enable import from tidypics
+$tidypics_output .= elgg_view_field([
+    'id' => 'tidypics_import_admin_inly',
+    '#type' => 'checkbox',
+    'name' => 'params[tidypics_import_admin_inly]',
+    'switch' => true,
+    'value' => 'yes',
+    'checked' => ($plugin->tidypics_import_admin_inly === 'yes'), 
+    '#label' => elgg_echo('egallery:settings:tidypics_import_admin_inly'),
+    '#help' => elgg_echo('egallery:settings:tidypics_import_admin_inly:note'),
+]);
+echo elgg_view_module('inline', '', $tidypics_output, ['header' => elgg_format_element('h3', [], elgg_echo('egallery:settings:tidypics:import'))]);

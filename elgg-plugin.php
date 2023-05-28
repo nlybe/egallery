@@ -46,6 +46,7 @@ return [
     ],
 	'actions' => [
         'egallery/gallery_edit' => [],
+		'egallery/gallery_import' => [],
         'egallery/gallery_delete' => [],
 		'egallery/gallery_item_delete' => [],
         'egallery/get_latest_item' => [],
@@ -60,6 +61,13 @@ return [
 				\Elgg\Router\Middleware\Gatekeeper::class,
 			],
         ],
+        'import:object:entity_gallery' => [
+			'path' => '/egallery/import/{guid}',
+			'resource' => 'egallery/gallery_import',
+			'middleware' => [
+				\Elgg\Router\Middleware\Gatekeeper::class,
+			],
+		],
         'view:object:entity_gallery' => [
 			'path' => '/egallery/view/{guid}/{title?}',
 			'resource' => 'egallery/gallery_view',
@@ -71,6 +79,9 @@ return [
         'view:object:gallery_item:edit' => [
 			'path' => '/egallery/item/edit/{guid}',
 			'resource' => 'egallery/gallery_item_edit',
+			'middleware' => [
+				\Elgg\Router\Middleware\Gatekeeper::class,
+			],
 		],
 		'collection:object:entity_gallery:owner' => [
 			'path' => '/egallery/owner/{username}',
@@ -120,6 +131,8 @@ return [
         'show_url' => 'yes',
 		'gallery_url_include_title' => 'yes',
 		'gallery_site_menu_item' => 'yes',
+		'enable_tidypics_import' => 'no',
+		'tidypics_import_admin_inly' => 'no',
 	],
 	'widgets' => [
 		'entity_gallery' => [

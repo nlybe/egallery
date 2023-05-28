@@ -15,8 +15,8 @@ return [
     'collection:object:entity_gallery:owner' => '%s\'s Galleries',
     'collection:object:entity_gallery:mine' => 'My galleries',
     'collection:object:entity_gallery:friends' => 'Friends\' galleries',
-    'collection:object:entity_gallery:all' => 'Galleries',
-    'entity_gallery:menu' => 'Galleries',
+    'collection:object:entity_gallery:all' => 'Photo Galleries',
+    'entity_gallery:menu' => 'Photos',
 
     // gallery form
     'egallery:add:requiredfields' => 'Fields with an asterisk (*) are required',
@@ -40,12 +40,19 @@ return [
     'egallery:item:add:url:help' => "Optionally set a url of image source",
     'egallery:item:add:description' => "Description",
     'egallery:item:add:description:help' => "Optionally set a description",
-    'egallery:breadcrumb:label' => "Back to %s",
-        
+    'egallery:breadcrumb:label' => "Back to %s",        
     'egallery:upload_photos:save:success' => "Photos were successfully added on this gallery", 
-    'egallery:upload_photos:save:failed' => "Photos couldn't be uploaded",
-    
+    'egallery:upload_photos:save:failed' => "Photos couldn't be uploaded",    
     'egallery:form:groups_list:no_groups_plugin' => "Groups plugin is not enabled",
+    'egallery:import:tidypics' => 'Import from tidypics',
+    'egallery:import:tidypics:album' => 'Select Album',
+    'egallery:import:tidypics:album:note' => 'Select an album to import photos to %s',
+    'egallery:import:tidypics:success' => '%s photos imported successfully',
+    'egallery:import:tidypics:fail' => 'Import failed - Album empty',
+    'egallery:import:tidypics:error' => 'Import is not enabled or the Tidypics plugin is missing',
+    'egallery:import:tidypics:egallery:invalid' => 'Invalid gallery',
+    'egallery:import:tidypics:album:invalid' => 'Invalid Tidypics album',
+    'egallery:import:tidypics:album:invalid_access' => 'You do not have permissions to edit photos from this album',
 
     // gallery item
     'egallery:item:download' => "Download this", 
@@ -55,7 +62,7 @@ return [
     'egallery:item:save:missing_title' => "Title is missing. This item cannot be saved.",
     'egallery:item:save:url_error' => "The URL is not valid. This item cannot be saved.",
     'egallery:item:url' => "Image Source", 
-
+    
     // status messages
     'egallery:invalid' => 'Invalid entity or invalid permissions',
     'egallery:invalid_access' => "Invalid access to this action",
@@ -93,6 +100,12 @@ return [
     'egallery:settings:show_url:note' => 'Check this if want to include a source url for each photo',
     'egallery:settings:gallery_url_include_title' => "Include title on gallery item URL",
     'egallery:settings:gallery_url_include_title:note' => "The function elgg_get_friendly_title doesn't work good with some languages, so it may raise an invalid URI path issue. In this case uncheck this option to exclude the title from gallery item url.",
+    'egallery:settings:tidypics:import' => 'Tidypics import',
+    'egallery:settings:tidypics:inactive' => 'The tidypics plugin is not enabled',
+    'egallery:settings:enable_tidypics_import' => 'Enable import from tidypics',
+    'egallery:settings:enable_tidypics_import:note' => 'Check this if want to enable the import from tidypics albums feature',
+    'egallery:settings:tidypics_import_admin_inly' => 'Tidypics only from admins',
+    'egallery:settings:tidypics_import_admin_inly:note' => 'Check this if want to allow only administrators to import import from tidypics albums',
     
     'egallery:menu:label' => 'Manage Gallery',
     'egallery:menu:title' => 'Edit %s photo gallery',

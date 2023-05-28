@@ -9,6 +9,14 @@
     justify-content: left;
 }
 
+.elgg-egallery li.medium {
+    max-width: 220px;
+}
+
+.elgg-egallery li.small {
+    max-width: 120px;
+}
+
 .elgg-egallery li a {
     border: 0;
     background-color: transparent;

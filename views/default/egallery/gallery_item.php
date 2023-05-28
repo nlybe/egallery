@@ -12,7 +12,6 @@ $show_icons = elgg_extract('show_icons', $vars, true);
 $thumb_size = elgg_extract('thumb_size', $vars, 'small');
 $show_url = elgg_extract('show_url', $vars, false);
 
-// if (!elgg_instanceof($file, 'object', GalleryItem::SUBTYPE)) {
 if (!$file instanceof \GalleryItem) {
     return;
 }
@@ -32,10 +31,6 @@ $item .= elgg_view('output/url', [
     ]),
 ]);
 $item .= elgg_format_element('div', ['class' => 'ecaption'], $file->title);
-
-// if ($file->description) {
-//     $item .= elgg_format_element('div', ['class' => 'ecaption'], $file->description);
-// }
 
 // Validate url
 if ($show_url && EgalleryOptions::displayImageURL() && $file->hasValidURL()) {

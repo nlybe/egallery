@@ -29,7 +29,8 @@ composer require nlybe/egallery
 - FIXED - Fix gallery comments
 - DONE - added new gallery creation to the river
 - DONE - Added rss for galleries
-- Import from tidypics
+- DONE - Import from tidypics
 - Add photos sorting option
 - Add mass photos deletion
 - Enrich images features
+- Add photo view page and make it likeable, commentable, searchable

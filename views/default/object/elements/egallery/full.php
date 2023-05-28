@@ -28,7 +28,6 @@ if (EgalleryOptions::isEntityTypeGalleryEnabled($sub)) {
             $vars['show_icons'] = false;
             $vars['show_url'] = true;
             $vars['thumb_size'] = 'medium';
-            // echo elgg_view_module('aside', elgg_echo('egallery:photos:view:title'), elgg_view('egallery/gallery_images', $vars), [
             echo elgg_view_module('aside', $title, elgg_view('egallery/gallery_images', $vars), [
                 'class' => 'egallery-module',
             ]);
