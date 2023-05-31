@@ -25,7 +25,8 @@ if ($file instanceof \GalleryItem) {
     $content = elgg_format_element('li', ['id' => 'pgi_'.$file->getGUID()], 
         elgg_view('egallery/gallery_item', [
             'p_gallery_item' => $file,
-            'item_class' => 'cboxElement'
+            'item_class' => 'cboxElement',
+            'thumb_size' => 'medium',
         ])
     );    
 

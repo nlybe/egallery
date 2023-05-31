@@ -30,8 +30,9 @@ composer require nlybe/egallery
 - DONE - added new gallery creation to the river
 - DONE - Added rss for galleries
 - DONE - Import from tidypics
+- Add photo view page and make it likeable, commentable, searchable
 - Add support for groups
+- Greek translations
 - Add photos sorting option
 - Add mass photos deletion
 - Enrich images features
-- Add photo view page and make it likeable, commentable, searchable

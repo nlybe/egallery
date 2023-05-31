@@ -10,6 +10,8 @@ return [
     'entity_gallery' => 'Galleries',
     'collection:object:entity_gallery' => 'Galleries',
     'collection:object:gallery_item' => 'Gallery Photos',
+    'item:object:entity_gallery' => 'Photo Galleries',
+    'item:object:gallery_item' => 'Photos',
     'collection:object:about' => 'About', // missing from Elgg
     'entity_gallery:none' => 'No galleries',
     'collection:object:entity_gallery:owner' => '%s\'s Galleries',

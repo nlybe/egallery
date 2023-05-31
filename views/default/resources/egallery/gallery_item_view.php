@@ -13,13 +13,7 @@ if (!$img instanceof \GalleryItem) {
 }
 
 $size = elgg_extract('size', $vars, 'medium');
-if ($size == 'original') {
-    $img->setFilename($img->file_prefix . '.jpg');
-}
-else {
-    $img->setFilename("gallery_item/".$img->getGUID() .'_'. $size . '.jpg');
-}
-
+$img->setFilename("gallery_item/".$img->getGUID() .'_'. $size . '.jpg');
 $filename = $img->getFilenameOnFilestore();
 
 $filesize = @filesize($filename);

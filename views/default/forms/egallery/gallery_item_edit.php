@@ -59,8 +59,7 @@ echo elgg_view_field([
 ]);   
 
 echo elgg_view_field([
-    // '#type' => 'access',
-    '#type' => 'hidden',
+    '#type' => 'access',
     'name' => 'access_id',
     'value' => $access_id,
     '#label' => elgg_echo('access'),

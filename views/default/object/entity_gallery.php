@@ -67,10 +67,8 @@ if ($full && !elgg_in_context('gallery')) {
         'imprint' => $imprint,
     ];
     $params = $params + $vars;
-    
-    // echo elgg_get_excerpt($entity->getDisplayName(), 100);
+
     echo elgg_view('object/elements/full', $params);
-    echo elgg_view('egallery/gallery_images', $vars);
 
     if ($container->canWriteToContainer(0, 'object', EntityGallery::SUBTYPE)) {
         $form_vars = ['name' => 'photos_upload', 'enctype' => 'multipart/form-data', 'class' => 'dropzone'];
@@ -79,6 +77,9 @@ if ($full && !elgg_in_context('gallery')) {
             'subtype' => GalleryItem::SUBTYPE,
         ]);
     }
+
+    $vars['thumb_size'] = 'medium';
+    echo elgg_view('egallery/gallery_images', $vars);
 
     // finally show the comments
     $params['show_responses'] = true;
