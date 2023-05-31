@@ -19,10 +19,12 @@ return [
     'entity_gallery:menu' => 'Photos',
 
     // gallery form
+    'egallery:add:gallery' => "Add",
     'egallery:add:requiredfields' => 'Fields with an asterisk (*) are required',
     'egallery:add:title' => "Title",
     'egallery:add:title:help' => "Set the title of gallery",
     'egallery:add:value' => "Parent item: '%s'",
+    'egallery:add:value:user' => "%s's album",
     'egallery:add:description' => "Description",
     'egallery:add:description:help' => "Enter a description for this gallery.",
     'egallery:add:tags' => "Tags",
@@ -51,6 +53,7 @@ return [
     'egallery:import:tidypics:fail' => 'Import failed - Album empty',
     'egallery:import:tidypics:error' => 'Import is not enabled or the Tidypics plugin is missing',
     'egallery:import:tidypics:egallery:invalid' => 'Invalid gallery',
+    'egallery:import:tidypics:egallery:invalid_access' => 'Invalid access',
     'egallery:import:tidypics:album:invalid' => 'Invalid Tidypics album',
     'egallery:import:tidypics:album:invalid_access' => 'You do not have permissions to edit photos from this album',
 
@@ -66,7 +69,7 @@ return [
     // status messages
     'egallery:invalid' => 'Invalid entity or invalid permissions',
     'egallery:invalid_access' => "Invalid access to this action",
-    'egallery:onject:disabled' => "Gallery is not enabled for this type of entities",     
+    'egallery:onject:disabled' => "Gallery is not enabled for this type of entities: %s",     
     'egallery:item:delete:success' => "Gallery item was successfully deleted", 
     'egallery:item:delete:failed' => "Gallery item cannot be deleted",
     'egallery:item:save:success' => "Gallery item was successfully saved", 
@@ -104,8 +107,8 @@ return [
     'egallery:settings:tidypics:inactive' => 'The tidypics plugin is not enabled',
     'egallery:settings:enable_tidypics_import' => 'Enable import from tidypics',
     'egallery:settings:enable_tidypics_import:note' => 'Check this if want to enable the import from tidypics albums feature',
-    'egallery:settings:tidypics_import_admin_inly' => 'Tidypics only from admins',
-    'egallery:settings:tidypics_import_admin_inly:note' => 'Check this if want to allow only administrators to import import from tidypics albums',
+    'egallery:settings:tidypics_import_admin_only' => 'Import only from admins',
+    'egallery:settings:tidypics_import_admin_only:note' => 'Check this if want to allow only administrators to import from tidypics albums',
     
     'egallery:menu:label' => 'Manage Gallery',
     'egallery:menu:title' => 'Edit %s photo gallery',

@@ -132,7 +132,7 @@ return [
 		'gallery_url_include_title' => 'yes',
 		'gallery_site_menu_item' => 'yes',
 		'enable_tidypics_import' => 'no',
-		'tidypics_import_admin_inly' => 'no',
+		'tidypics_import_admin_only' => 'no',
 	],
 	'widgets' => [
 		'entity_gallery' => [

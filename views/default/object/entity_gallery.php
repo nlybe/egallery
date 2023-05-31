@@ -45,14 +45,16 @@ else {
 
 
 $imprint = [];
-$imprint[] = [
-    'icon_name' => 'arrow-up', 
-    'content' => elgg_view('output/url', [
-        'href' => $container->getURL(),
-        'title' => elgg_echo('egallery:add:value', [$container->getDisplayName()]),
-        'text' => $container->getDisplayName(),
-    ])
-];
+if (!$container instanceof \ElggUser) {
+    $imprint[] = [
+        'icon_name' => 'angle-double-up',
+        'content' => elgg_view('output/url', [
+            'href' => $container->getURL(),
+            'title' => elgg_echo('egallery:add:value', [$container->getDisplayName()]),
+            'text' => $container->getDisplayName(),
+        ])
+    ];
+}
 
 if ($full && !elgg_in_context('gallery')) {
     $body = elgg_format_element('div', ['class' => 'desc'], $entity->description?$entity->description:'&nbsp;'); 

@@ -17,7 +17,7 @@ $vars['gallery'] = $entity;
 $container = $entity->getContainerEntity();
 $sub = $container->getSubtype();
 if (!EgalleryOptions::isEntityTypeGalleryEnabled($sub)) {
-    elgg_error_response(elgg_echo('egallery:onject:disabled'));
+    elgg_error_response(elgg_echo('egallery:onject:disabled', [$sub]));
     forward(REFERRER);
 }
 

@@ -28,6 +28,9 @@ class EntityGallery extends ElggObject {
      * @return string
      */
     public static function setGalleryTitle($container) {
+        if ($container instanceof \ElggUser) {
+            return elgg_echo('egallery:add:value:user', [$container->name]);
+        }
         return elgg_echo('egallery:add:value', [$container->title]);
     }
     

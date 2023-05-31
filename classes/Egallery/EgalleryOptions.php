@@ -112,7 +112,7 @@ class EgalleryOptions {
             return false;
         } 
 
-        $admin_only = self::getParams('tidypics_import_admin_inly');
+        $admin_only = self::getParams('tidypics_import_admin_only');
         if ($admin_only === 'yes' && !elgg_is_admin_logged_in()) {
             return false;
         }

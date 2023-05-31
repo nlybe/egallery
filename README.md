@@ -30,6 +30,7 @@ composer require nlybe/egallery
 - DONE - added new gallery creation to the river
 - DONE - Added rss for galleries
 - DONE - Import from tidypics
+- Add support for groups
 - Add photos sorting option
 - Add mass photos deletion
 - Enrich images features

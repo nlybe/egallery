@@ -126,13 +126,13 @@ $tidypics_output .= elgg_view_field([
 ]);
 // set if enable import from tidypics
 $tidypics_output .= elgg_view_field([
-    'id' => 'tidypics_import_admin_inly',
+    'id' => 'tidypics_import_admin_only',
     '#type' => 'checkbox',
-    'name' => 'params[tidypics_import_admin_inly]',
+    'name' => 'params[tidypics_import_admin_only]',
     'switch' => true,
     'value' => 'yes',
-    'checked' => ($plugin->tidypics_import_admin_inly === 'yes'), 
-    '#label' => elgg_echo('egallery:settings:tidypics_import_admin_inly'),
-    '#help' => elgg_echo('egallery:settings:tidypics_import_admin_inly:note'),
+    'checked' => ($plugin->tidypics_import_admin_only === 'yes'), 
+    '#label' => elgg_echo('egallery:settings:tidypics_import_admin_only'),
+    '#help' => elgg_echo('egallery:settings:tidypics_import_admin_only:note'),
 ]);
 echo elgg_view_module('inline', '', $tidypics_output, ['header' => elgg_format_element('h3', [], elgg_echo('egallery:settings:tidypics:import'))]);
