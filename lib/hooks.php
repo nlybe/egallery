@@ -63,6 +63,19 @@ function egallery_entity_menu_setup(\Elgg\Hook $hook) {
             'class' => 'elgg-anchor elgg-menu-content elgg-lightbox',
         ]);         
     }
+
+    if ($entity instanceof \GalleryItem && $entity->canEdit()) {
+        $return[] = ElggMenuItem::factory([
+            'name' => 'edit',
+            'icon' => 'edit',
+            'text' => elgg_echo('edit'),
+            'href' => elgg_generate_url('view:object:gallery_item:edit', [
+                'guid' => $entity->guid,
+            ]),
+            'priority' => 800,
+            'class' => 'elgg-anchor elgg-menu-content elgg-lightbox',
+        ]);         
+    }
         
     return $return;
 }
@@ -102,8 +115,23 @@ function egallery_object_set_url(\Elgg\Hook $hook) {
 		return;
 	}
 
-    $friendly_title = EgalleryOptions::includeTitleOnGalleryUrl()?elgg_get_friendly_title($entity->title):"";
+    $friendly_title = EgalleryOptions::includeTitleOnGalleryPhotosUrl()?elgg_get_friendly_title($entity->title):"";
     return "egallery/view/{$entity->guid}/$friendly_title";
+}
+
+/**
+ * Format and return the URL for entity gallery item objects
+ *
+ * @param \Elgg\Hook $hook
+ */
+function egallery_item_object_set_url(\Elgg\Hook $hook) {
+    $entity = $hook->getEntityParam();    
+    if (!$entity instanceof \GalleryItem) {
+		return;
+	}
+
+    $friendly_title = EgalleryOptions::includeTitleOnGalleryPhotosUrl()?elgg_get_friendly_title($entity->title):"";
+    return "egallery/photo/{$entity->guid}/$friendly_title";
 }
 
 /**

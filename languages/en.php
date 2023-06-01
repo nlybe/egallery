@@ -60,6 +60,7 @@ return [
     'egallery:import:tidypics:album:invalid_access' => 'You do not have permissions to edit photos from this album',
 
     // gallery item
+    'egallery:item:comment' => "View and comment", 
     'egallery:item:download' => "Download this", 
     'egallery:item:default_title' => 'Edit Gallery Item',
     'egallery:item:edit' => 'Edit item information', 
@@ -86,6 +87,7 @@ return [
     // widgets
     'egallery:galleries:more' => 'More galleries',
     'egallery:numbertodisplay' => 'Number of galleries to display',
+    'widgets:entity_gallery:description' => "Display your photo galleries",
 
     // river
 	'river:object:entity_gallery:create' => '%s created a gallery %s',

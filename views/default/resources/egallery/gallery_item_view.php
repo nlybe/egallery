@@ -6,7 +6,6 @@
 
 // get entity
 $guid = elgg_extract('guid', $vars, 0);
-
 $img = get_entity($guid);
 if (!$img instanceof \GalleryItem) {
     forward('','404');

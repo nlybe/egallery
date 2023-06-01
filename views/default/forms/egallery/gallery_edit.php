@@ -33,7 +33,7 @@ echo elgg_view_field([
 ]);
 
 echo elgg_view_field([
-    '#type' => 'plaintext',
+    '#type' => 'longtext',
     'name' => 'description',
     'value' => $description,
     'rows' => 3,

@@ -21,29 +21,24 @@ $owner_icon = elgg_view_entity_icon($owner, 'small');
 $author_text = elgg_view('page/elements/by_line', $vars);
 
 if ($full && !elgg_in_context('gallery')) {
-    $body = '<div class="elgg-image-block clearfix">';
-    
-    $category_label .= elgg_format_element('span', ['class' => ''], elgg_echo('portfolio:gallery:add:category'));
-    $body .= elgg_format_element('p', ['class' => ''], $category_label.': '.$entity->category);
-    
-    $body .= '<ul class="elgg-gallery elgg-egallery-gallery elgg-showcase-screenshots">';
-    $body .= elgg_format_element('li', ['id' => 'pgi_'.$entity->getGUID()], 
-        elgg_view('egallery/gallery_item', [
-            'p_gallery_item' => $entity,
-            'show_icons' => false,
-            'thumb_size' => 'large',
-        ])
-    );    
-    $body .= '</ul>';    
-    
-    $body .= '</div>';    
+    $body .= elgg_format_element('div', ['class' => 'elgg-image-block clearfix'], elgg_view('egallery/gallery_item', [
+        'p_gallery_item' => $entity,
+        'show_icons' => false,
+        'thumb_size' => 'master',
+        'caption_view' => elgg_extract('caption_view', $vars, false),
+    ]));
 
-    echo elgg_view('object/elements/full', [
-        'entity' => $entity,
+    $params = [
         'icon' => $owner_icon,
-        'summary' => $summary,
-        'body' => $body,
-    ]);
+        'show_summary' => true,
+        'body' => $body, 
+        'show_navigation' => true,
+        'title' => false,
+        'imprint' => $imprint,
+    ];
+    $params = $params + $vars;
+
+    echo elgg_view('object/elements/full', $params);
 } 
 else {
     $display_text = $url;
@@ -68,8 +63,3 @@ else {
     echo elgg_view_image_block($owner_icon, $body);
     
 }
-
-
-?>
-
-

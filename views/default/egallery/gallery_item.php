@@ -11,6 +11,7 @@ $item_class = elgg_extract('item_class', $vars, '');
 $show_icons = elgg_extract('show_icons', $vars, true);
 $thumb_size = elgg_extract('thumb_size', $vars, 'small');
 $show_url = elgg_extract('show_url', $vars, false);
+$caption_view = elgg_extract('caption_view', $vars, false);
 
 if (!$file instanceof \GalleryItem) {
     return;
@@ -30,7 +31,15 @@ $item .= elgg_view('output/url', [
         'alt' => $file->title,
     ]),
 ]);
-$item .= elgg_format_element('div', ['class' => 'ecaption'], $file->title);
+
+if ($caption_view) {
+    $item .= elgg_view('output/url', [
+        'href' => $file->getUrl(),
+        'title' => $file->title,
+        'text' => $file->title,
+        'class' => 'ecaption'
+    ]);
+}
 
 // Validate url
 if ($show_url && EgalleryOptions::displayImageURL() && $file->hasValidURL()) {
@@ -43,6 +52,21 @@ if ($show_url && EgalleryOptions::displayImageURL() && $file->hasValidURL()) {
 }
 
 if ($show_icons) {
+    $icons .= elgg_view('output/url', [
+        'name' => 'view',
+        'href' => $file->getUrl(),
+        'title' => elgg_echo('egallery:item:comment'),
+        'text' => elgg_view_icon('comment-dots'),
+    ]);
+
+    $icons .= elgg_view('output/url', [
+        'name' => 'download',
+        'href' => $original_url,
+        'title' => elgg_echo('egallery:item:download'),
+        'text' => elgg_view_icon('download'),
+        'target' => '_blank'
+    ]);
+
     if ($file->canEdit()) {
         $icons .= elgg_view('output/url', [
             'name' => 'set_cover',
@@ -59,14 +83,6 @@ if ($show_icons) {
             'class' => 'elgg-lightbox',
         ]);
     }
-
-    $icons .= elgg_view('output/url', [
-        'name' => 'download',
-        'href' => $original_url,
-        'title' => elgg_echo('egallery:item:download'),
-        'text' => elgg_view_icon('download'),
-        'target' => '_blank'
-    ]);
 
     if ($file->canDelete()) {
         $icons .= elgg_view('output/url', [

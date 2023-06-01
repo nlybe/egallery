@@ -37,11 +37,11 @@ return [
             'subtype' => 'gallery_item',
             'class' => 'GalleryItem',
             'searchable' => false,
-            // 'capabilities' => [
-			// 	'commentable' => true,
-			// 	'searchable' => true,
-			// 	'likable' => true,
-			// ],
+            'capabilities' => [
+				'commentable' => true,
+				'searchable' => true,
+				'likable' => true,
+			],
         ]
     ],
 	'actions' => [
@@ -72,6 +72,10 @@ return [
 			'path' => '/egallery/view/{guid}/{title?}',
 			'resource' => 'egallery/gallery_view',
 		],
+        'view:object:gallery_item' => [
+			'path' => '/egallery/photo/{guid}/{title?}',
+			'resource' => 'egallery/gallery_item_display',
+		],
         'view:object:gallery_item:view' => [
 			'path' => '/egallery/item/{guid}/{size?}/{file?}',
 			'resource' => 'egallery/gallery_item_view',
@@ -100,6 +104,7 @@ return [
 		'entity:url' => [
 			'object' => [
 				'egallery_object_set_url' => [ 'priority' => 400],
+				'egallery_item_object_set_url' => [ 'priority' => 450],
 			],
 		],
 		'register' => [

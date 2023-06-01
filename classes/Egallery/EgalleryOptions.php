@@ -74,7 +74,7 @@ class EgalleryOptions {
      * 
      * @return boolean
      */
-    Public Static function includeTitleOnGalleryUrl() {
+    Public Static function includeTitleOnGalleryPhotosUrl() {
         $include_title = self::getParams('gallery_url_include_title');
         if ($include_title === 'yes') {
             return true;
