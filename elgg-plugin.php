@@ -148,7 +148,7 @@ return [
 	],
 	'widgets' => [
 		'entity_gallery' => [
-			'context' => ['profile', 'dashboard'],
+			'context' => ['profile', 'dashboard', 'groups'],
 		],
 	],
 	'view_extensions' => [

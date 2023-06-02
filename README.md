@@ -32,7 +32,7 @@ composer require nlybe/egallery
 - DONE - Import from tidypics
 - DONE - Add photo view page and make it likeable, commentable, searchable
 - DONE - Add support for groups
-- Greek translations
+- DONE - Greek translations
 - Add photos sorting option
 - Add mass photos deletion
 - Enrich images features

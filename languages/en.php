@@ -82,7 +82,7 @@ return [
     // widgets
     'egallery:galleries:more' => 'More galleries',
     'egallery:numbertodisplay' => 'Number of galleries to display',
-    'widgets:entity_gallery:description' => "Display your photo galleries",
+    'widgets:entity_gallery:description' => "Display photo galleries",
 
     // river
 	'river:object:entity_gallery:create' => '%s created a gallery %s',

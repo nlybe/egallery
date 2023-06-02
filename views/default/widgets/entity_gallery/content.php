@@ -22,6 +22,13 @@ if ($widget->context === 'profile' && $owner instanceof \ElggUser) {
 	$options['owner_guid'] = $owner->guid;
 	$url = elgg_generate_url('collection:object:entity_gallery:owner', ['username' => $owner->username]);
 }
+if ($widget->context === 'groups' && $owner instanceof \ElggGroup) {
+	$options['container_guid'] = $owner->guid;
+	$url = elgg_generate_url('collection:object:entity_gallery:group', [
+        'guid' => $owner->guid,
+        'subpage' => 'all',
+    ]);
+}
 else if ($widget->context === 'dashboard') {
 	$url = elgg_generate_url('collection:object:entity_gallery:all');
 }
