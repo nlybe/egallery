@@ -21,7 +21,6 @@ $owner = $widget->getOwnerEntity();
 if ($widget->context === 'profile' && $owner instanceof \ElggUser) {
 	$options['owner_guid'] = $owner->guid;
 	$url = elgg_generate_url('collection:object:entity_gallery:owner', ['username' => $owner->username]);
-	// $options['widget_more'] = elgg_view_url($url, elgg_echo('egallery:galleries:more'));
 }
 else if ($widget->context === 'dashboard') {
 	$url = elgg_generate_url('collection:object:entity_gallery:all');

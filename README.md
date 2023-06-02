@@ -31,7 +31,7 @@ composer require nlybe/egallery
 - DONE - Added rss for galleries
 - DONE - Import from tidypics
 - DONE - Add photo view page and make it likeable, commentable, searchable
-- Add support for groups
+- DONE - Add support for groups
 - Greek translations
 - Add photos sorting option
 - Add mass photos deletion

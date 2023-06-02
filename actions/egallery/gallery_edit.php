@@ -17,9 +17,9 @@ $container = get_entity($container_guid);
 
 // get access id or assign according site default access and container
 $access_level = get_default_access();
-// if ($container instanceof \ElggGroup) {
-//     $access_level = $container->group_acl;
-// }
+if ($container instanceof \ElggGroup) {
+    $access_level = $container->group_acl;
+}
 $access_id = (int) get_input("access_id", $access_level);
             
 elgg_make_sticky_form('entity_gallery');

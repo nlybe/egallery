@@ -9,7 +9,6 @@ use Egallery\EgalleryOptions;
 $title = elgg_extract('title', $vars, '');
 $url = elgg_extract('url', $vars, '');
 $description = elgg_extract('description', $vars, '');
-// $category = elgg_extract('category', $vars, '');
 $tags = elgg_extract('tags', $vars, '');
 $access_id = elgg_extract('access_id', $vars, get_default_access());
 $container_guid = elgg_extract('container_guid', $vars);

@@ -18,7 +18,6 @@ if ($description) {
     $description = str_replace('<br />','',$description);
 }
 
-// get the container entity
 $container = get_entity($container_guid);
 
 echo elgg_format_element('p', [], elgg_echo('egallery:add:requiredfields'));

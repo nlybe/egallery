@@ -58,7 +58,6 @@ function entity_gallery_item_prepare_form_vars($entity = null) {
         'title' => '',
         'description' => '',
         'url' => '',
-        // 'category' => '',
         'tags' => '',
         'access_id' => get_default_access(),
         'owner_guid' => elgg_get_page_owner_guid(),

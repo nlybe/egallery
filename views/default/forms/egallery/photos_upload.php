@@ -15,7 +15,6 @@ if (elgg_is_active_plugin('dropzonejs_api')) {
         'accept' => "image/*",
         'max' => 25,
         'multiple' => true,
-        // 'container_guid' => $container_guid, 
         'subtype' => $subtype, 
     ]);
     

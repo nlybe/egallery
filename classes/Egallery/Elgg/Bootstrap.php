@@ -38,7 +38,7 @@ class Bootstrap extends DefaultPluginBootstrap {
 		}
 		
 		if (EgalleryOptions::isEntityTypeGalleryEnabled('group')) {
-			// Add group option
+			// add group option
 			elgg()->group_tools->register('entity_gallery'); 
 		}
 

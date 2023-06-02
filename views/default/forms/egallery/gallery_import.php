@@ -11,7 +11,6 @@ if ( !$entity instanceof \EntityGallery || !$entity->canEdit() ) {
     return;
 }
 
-
 echo elgg_view_field([
     '#type' => 'objectpicker',
     'subtype' => TidypicsAlbum::SUBTYPE,

@@ -31,15 +31,15 @@ $options = [
 $content = elgg_list_entities($options);
 elgg_pop_context();
 
-// $add_link = elgg_view('output/url', [
-//     'href' => "news/add/$group->guid",
-//     'text' => elgg_echo('elggnews:add'),
-//     'is_trusted' => true,
-// ]);
+$add_link = elgg_view('output/url', [
+    'href' => elgg_generate_url('edit:object:entity_gallery', ['guid' => $group->guid]),
+    'text' => elgg_echo('egallery:add:gallery'),
+    'is_trusted' => true,
+]);
 
 echo elgg_view('groups/profile/module', [
     'title' => elgg_echo('egallery:group'),
     'content' => $content,
     'all_link' => $all_link,
-    // 'add_link' => $add_link,
+    'add_link' => $add_link,
 ]);
