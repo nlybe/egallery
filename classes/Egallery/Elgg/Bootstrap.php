@@ -27,8 +27,6 @@ class Bootstrap extends DefaultPluginBootstrap {
 	 */
 	protected function initViews() {
 
-		elgg_extend_view('css/elgg', 'egallery/egallery.css');
-
 		// add a site navigation item
 		if (EgalleryOptions::addGallerySiteMenuItem()) {			
 			elgg_register_menu_item('site', [
@@ -39,6 +37,11 @@ class Bootstrap extends DefaultPluginBootstrap {
 			]); 
 		}
 		
+		if (EgalleryOptions::isEntityTypeGalleryEnabled('group')) {
+			// Add group option
+			elgg()->group_tools->register('entity_gallery'); 
+		}
+
 		// set cover sizes
 		elgg_set_config('gallery_item_sizes', [
 			'tiny' => ['w' => 40, 'h' => 40, 'square' => true, 'upscale' => false],

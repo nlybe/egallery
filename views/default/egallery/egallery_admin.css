@@ -1,0 +1,8 @@
+/**
+ * Elgg Entities Gallery
+ * @package egallery 
+ */
+
+#egallery-settings .input_box .elgg-field {
+    max-width: 500px;
+}

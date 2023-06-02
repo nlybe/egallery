@@ -19,7 +19,7 @@ if ( $entity instanceof \EntityGallery ) {    // guid of EntityGallery object
     $egallery = $entity;
     $container = $egallery->getContainerentity();
 }
-else if ( $entity instanceof \ElggUser ) {    // guid of ElggUser
+else if ( $entity instanceof \ElggUser || $entity instanceof \ElggGroup ) {    // guid of ElggUser/ElggGroup
     $container = $entity;
 }
 else if ( $entity instanceof \ElggEntity ) {  // guid of ElggEntity so get it's gallery (if exists) or create a new one

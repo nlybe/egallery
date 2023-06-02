@@ -16,9 +16,19 @@ if (!$entity instanceof \GalleryItem) {
     forward(REFERRER);
 }
 
-$container = $entity->getOwnerEntity();
-elgg_push_collection_breadcrumbs('object', 'entity_gallery', $container);
-elgg_push_entity_breadcrumbs($entity, false);
+$container = $entity->getContainerEntity();
+$container_container = $container->getContainerEntity();
+if ($container_container instanceof \ElggGroup) {
+    elgg_push_breadcrumb(elgg_echo('groups'), 'groups');
+    elgg_push_entity_breadcrumbs($container, true);
+}
+else {
+	elgg_push_collection_breadcrumbs('object', 'entity_gallery');
+	elgg_push_entity_breadcrumbs($entity, true);
+}
+
+
+
 
 $vars['full_view'] = true;
 $vars['caption_view'] = false;

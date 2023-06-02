@@ -54,8 +54,8 @@ if (is_array($images) && sizeof($images) > 0) {
         $file->description = $image->description;
         $file->tags = $image->tags;
         $file->container_guid = $entity->guid;
-        $file->upload_time = $image->upload_time;
-        $file->created_time = $image->created_time;
+        $file->time_updated = $image->time_updated;
+        $file->time_created = $image->time_created;
         $file->access_id = $entity->access_id; 
         $file->originalfilename = $pieces[2];
         

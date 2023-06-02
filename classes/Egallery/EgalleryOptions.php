@@ -34,9 +34,9 @@ class EgalleryOptions {
     Public Static function isEntityTypeGalleryEnabled($sub) {
         $plugin = elgg_get_plugin_from_id(self::PLUGIN_ID);
         $param_name_entity = "egallery_{$sub}";
-        if ($plugin->$param_name_entity) {
+        if ($plugin->$param_name_entity === 'yes') {
             return true;
-        }
+        } 
         
         return false;
     }  
@@ -118,29 +118,6 @@ class EgalleryOptions {
         }
         
         return true;
-    }
-
-    
-	// /**
-	//  * Make the correct folder structure for an owner
-	//  *
-	//  * @param int $owner_guid the owner to generate for
-	//  * @return false|string
-	//  */
-	// public function getUploadPath($owner_guid) {		
-	// 	if (empty($owner_guid)) {
-	// 		$owner_guid = elgg_get_logged_in_user_guid();
-	// 	}
-		
-	// 	if (empty($owner_guid)) {
-	// 		return false;
-	// 	}
-		
-	// 	return implode('/', [
-	// 		elgg_get_site_entity()->guid,
-	// 		$owner_guid,
-	// 		'gallery_item',
-	// 	]);
-	// }    
+    } 
        
 }

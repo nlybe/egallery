@@ -99,6 +99,13 @@ return [
 			'path' => '/egallery/friends/{username}',
 			'resource' => 'egallery/gallery_friends',
 		],
+        'collection:object:entity_gallery:group' => [
+            'path' => '/egallery/group/{guid}/{subpage?}',
+			'resource' => 'egallery/gallery_group',
+            'defaults' => [
+                'subpage' => 'all',
+            ],
+        ],
     ],
 	'hooks' => [
 		'entity:url' => [
@@ -112,7 +119,7 @@ return [
 				'egallery_entity_menu_setup' => [],
 			],
 			'menu:owner_block' => [
-				'egallery_gallery_user_menu' => [],
+				'egallery_gallery_owner_menu' => [],
 			],
 		],
 		'upload:after' => [
@@ -142,6 +149,14 @@ return [
 	'widgets' => [
 		'entity_gallery' => [
 			'context' => ['profile', 'dashboard'],
+		],
+	],
+	'view_extensions' => [
+		'elgg.css' => [
+			'egallery/egallery.css' => [],
+		],
+		'css/admin' => [
+			'egallery/egallery_admin.css' => [],
 		],
 	],
 ];

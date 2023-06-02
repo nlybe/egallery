@@ -19,7 +19,11 @@ function egallery_entity_menu_setup(\Elgg\Hook $hook) {
     }
     
     $sub = ($entity instanceof \ElggEntity)?$entity->getSubtype():'';
-    if (EgalleryOptions::isEntityTypeGalleryEnabled($sub) && $entity->canEdit()) {
+    if (
+        !in_array($sub, ['user', 'group']) 
+        && EgalleryOptions::isEntityTypeGalleryEnabled($sub) 
+        && $entity->canEdit()
+    ) {
         $options = [
             'name' => "egallery_{$sub}",
             'icon' => 'images',
@@ -85,21 +89,24 @@ function egallery_entity_menu_setup(\Elgg\Hook $hook) {
  * 
  * @param \Elgg\Hook $hook
  */ 
-function egallery_gallery_user_menu(\Elgg\Hook $hook) {
+function egallery_gallery_owner_menu(\Elgg\Hook $hook) {
     $entity = $hook->getEntityParam();
-    if (!$entity instanceof \ElggUser) {
-        return;
-    }
-    
     $return = $hook->getValue();
     
-    $return[] = \ElggMenuItem::factory([
-        'name' => 'entity_galley',
-        'text' => elgg_echo('collection:object:entity_gallery'),
-        'href' => elgg_generate_url('collection:object:entity_gallery:owner', [
-            'username' => $entity->username,
-        ]),
-    ]);
+    if ($entity instanceof \ElggUser && EgalleryOptions::isEntityTypeGalleryEnabled('user')) {
+        $return[] = \ElggMenuItem::factory([
+            'name' => 'entity_galley',
+            'text' => elgg_echo('collection:object:entity_gallery'),
+            'href' => elgg_generate_url('collection:object:entity_gallery:owner', [
+                'username' => $entity->username,
+            ]),
+        ]);
+    }
+    elseif ($entity instanceof \ElggGroup && EgalleryOptions::isEntityTypeGalleryEnabled('group')) {
+        $url = "egallery/group/{$entity->guid}/all";
+        $item = new ElggMenuItem('egallery', elgg_echo('egallery:group'), $url);
+        $return[] = $item;
+    }
             
     return $return;
 }

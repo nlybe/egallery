@@ -45,7 +45,7 @@ else {
 
 
 $imprint = [];
-if (!$container instanceof \ElggUser) {
+if (!$container instanceof \ElggUser && !$container instanceof \ElggGroup) {
     $imprint[] = [
         'icon_name' => 'angle-double-up',
         'content' => elgg_view('output/url', [

@@ -87,13 +87,21 @@ asort($searchable);
 ob_start();
 foreach ($searchable as $name => $value) {
     $subtype = $name;
+    if (in_array($subtype, ['entity_gallery', 'gallery_item'])) {
+        // we dodn't need galleries for galleries and photos
+        continue;
+    }
+    
     $param_name_entity = 'egallery_' . $subtype;
     $param_name = 'params[' . $param_name_entity . ']';
 
-    $tmp = elgg_view('input/checkbox', [
+    $tmp = elgg_view_field([
         'id' => $param_name_entity,
+        '#type' => 'checkbox',
         'name' => $param_name, 
-        'checked' => ($plugin->$param_name_entity ? true : false),
+        'switch' => true,
+        'value' => 'yes',
+        'checked' => ($plugin->$param_name_entity === 'yes'),
         'label' => $value.elgg_echo('egallery:settings:photos:subtype', [$subtype]),
     ]);
     echo elgg_format_element('div', ['class' => 'input_box'], $tmp);  

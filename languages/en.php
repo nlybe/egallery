@@ -47,7 +47,7 @@ return [
     'egallery:breadcrumb:label' => "Back to %s",        
     'egallery:upload_photos:save:success' => "Photos were successfully added on this gallery", 
     'egallery:upload_photos:save:failed' => "Photos couldn't be uploaded",    
-    'egallery:form:groups_list:no_groups_plugin' => "Groups plugin is not enabled",
+    // 'egallery:form:groups_list:no_groups_plugin' => "Groups plugin is not enabled",
     'egallery:import:tidypics' => 'Import from tidypics',
     'egallery:import:tidypics:album' => 'Select Album',
     'egallery:import:tidypics:album:note' => 'Select an album to import photos to %s',
@@ -93,6 +93,11 @@ return [
 	'river:object:entity_gallery:create' => '%s created a gallery %s',
     'river:object:entity_gallery:container' => 'Gallery of %s - ',
 	'river:object:entity_gallery:comment' => '%s commented on the gallery %s',
+
+    // groups
+    'egallery:group' => 'Group galleries', 
+    'groups:tool:entity_gallery' => 'Enable group photo galleries', 
+    'egallery:owner' => "%s's photo galleries",
     
     // settings
     'egallery:settings:general:title' => 'General Settings',
