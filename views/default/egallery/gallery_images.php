@@ -23,10 +23,9 @@ if (!$images) {
 }
 
 $cover = $egallery->getGalleryCoverImage();
-
 $thumb_size = elgg_extract('thumb_size', $vars, 'small');
-
 $output = '<ul id="'.EgalleryOptions::DEFAULT_CAT.'" class="elgg-gallery elgg-egallery elgg-showcase-screenshots">';
+
 foreach ($images as $file) {
     $li_options = ['id' => 'pgi_'.$file->getGUID()];
     $li_options['class'] = $thumb_size;
