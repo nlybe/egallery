@@ -18,8 +18,7 @@ $all_link = elgg_view('output/url', [
     'is_trusted' => true,
 ]);
 
-elgg_push_context('widgets');
-$options = [
+$content = elgg_list_entities([
     'type' => 'object',
     'subtypes' => 'entity_gallery',
     'container_guid' => elgg_get_page_owner_guid(),
@@ -27,19 +26,22 @@ $options = [
     'full_view' => false,
     'pagination' => false,
     'no_results' => elgg_echo('entity_gallery:none'),
-];
-$content = elgg_list_entities($options);
-elgg_pop_context();
+]);
 
 $add_link = elgg_view('output/url', [
     'href' => elgg_generate_url('edit:object:entity_gallery', ['guid' => $group->guid]),
-    'text' => elgg_echo('egallery:add:gallery'),
+    'text' => elgg_echo('egallery:add:gallery:groups'),
+    'class' => 'elgg-lightbox',
     'is_trusted' => true,
 ]);
 
-echo elgg_view('groups/profile/module', [
-    'title' => elgg_echo('egallery:group'),
+$params = [
+	'entity_type' => 'object',
+	'entity_subtype' => 'entity_gallery',
     'content' => $content,
     'all_link' => $all_link,
     'add_link' => $add_link,
-]);
+];
+$params = $params + $vars;
+
+echo elgg_view('groups/profile/module', $params);

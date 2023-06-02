@@ -14,10 +14,8 @@ if (!$entity) {
 }
 
 $owner = $entity->getOwnerEntity();
-
 $owner_icon = elgg_view_entity_icon($owner, 'small');
 
-// $vars['owner_url'] = "egallery/owner/$owner->username";
 $author_text = elgg_view('page/elements/by_line', $vars);
 
 if ($full && !elgg_in_context('gallery')) {

@@ -104,7 +104,7 @@ function egallery_gallery_owner_menu(\Elgg\Hook $hook) {
     }
     elseif ($entity instanceof \ElggGroup && EgalleryOptions::isEntityTypeGalleryEnabled('group')) {
         $url = "egallery/group/{$entity->guid}/all";
-        $item = new ElggMenuItem('egallery', elgg_echo('egallery:group'), $url);
+        $item = new ElggMenuItem('egallery', elgg_echo('collection:object:entity_gallery:group'), $url);
         $return[] = $item;
     }
             

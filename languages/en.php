@@ -95,9 +95,10 @@ return [
 	'river:object:entity_gallery:comment' => '%s commented on the gallery %s',
 
     // groups
-    'egallery:group' => 'Group galleries', 
+    'collection:object:entity_gallery:group' => 'Group galleries', 
     'groups:tool:entity_gallery' => 'Enable group photo galleries', 
     'egallery:owner' => "%s's photo galleries",
+    'egallery:add:gallery:groups' => "Add a gallery",
     
     // settings
     'egallery:settings:general:title' => 'General Settings',
