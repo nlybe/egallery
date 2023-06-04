@@ -1,5 +1,22 @@
 # Change Log
 
+## 4.4 (June 2023)
+- Added option to exclude the title from gallery item url
+- Gallery is not displayed when is empty
+- Added menu item for "my galleries"
+- Added widget for galleries
+- Added site menu item for galleries
+- Added friend's galleries
+- Added new gallery creation to the river
+- Added rss for galleries
+- Added option to import photos from tidypics
+- Added photo view page and made it likeable, commentable, searchable
+- Added support for groups
+- Added Greek translations
+- Fixed gallery and photos removal
+- Fixed the gallery cover feature
+- Fixed gallery comments
+
 ## 4.3 (Apr 2023)
 
 - Upgraded for Elgg 4.3.x compatibility

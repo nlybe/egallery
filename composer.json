@@ -19,7 +19,7 @@
     ],
     "require": {
         "composer/installers": ">=1.0.8",
-        "nlybe/dropzonejs_api": ">=4.1"
+        "nlybe/dropzonejs_api": ">=4.2"
     },
     "extra": {
         "installer-name": "egallery"
