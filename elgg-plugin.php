@@ -12,7 +12,7 @@ require_once(dirname(__FILE__) . '/lib/functions.php');
 return [
     'plugin' => [
         'name' => 'Entities Gallery',
-		'version' => '4.4',
+		'version' => '4.4.1',
 		'dependencies' => [
 			'dropzonejs_api' => [
 				'must_be_active' => true,

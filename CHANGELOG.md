@@ -1,5 +1,9 @@
 # Change Log
 
+## 4.4.1 (June 2023)
+
+- Replaced the deprecated function **get_registered_entity_types()** with **elgg_entity_types_with_capability()**
+
 ## 4.4 (June 2023)
 - Added option to exclude the title from gallery item url
 - Gallery is not displayed when is empty

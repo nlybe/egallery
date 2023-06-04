@@ -64,7 +64,7 @@ echo elgg_view_field([
 
 
 $searchable = [];
-$registered = get_registered_entity_types();
+$registered = elgg_entity_types_with_capability('searchable');
 if ($registered) {
     foreach ($registered as $k => $v) {
         if (!is_array($v)) {
