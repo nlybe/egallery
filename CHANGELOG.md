@@ -1,5 +1,9 @@
 # Change Log
 
+## 5.5.1 (June 2023)
+
+- Renamed hooks.php to events.php
+
 ## 5.5 (June 2023)
 
 - Upgraded for Elgg 5.x compatibility

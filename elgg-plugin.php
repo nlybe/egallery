@@ -6,13 +6,13 @@
 
 use Egallery\Elgg\Bootstrap;
 
-require_once(dirname(__FILE__) . '/lib/hooks.php');
+require_once(dirname(__FILE__) . '/lib/events.php');
 require_once(dirname(__FILE__) . '/lib/functions.php');
 
 return [
     'plugin' => [
         'name' => 'Entities Gallery',
-		'version' => '5.5',
+		'version' => '5.5.1',
 		'dependencies' => [
 			'dropzonejs_api' => [
 				'must_be_active' => true,
