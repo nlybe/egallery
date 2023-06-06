@@ -7,8 +7,7 @@
 use Egallery\EgalleryOptions;
 
 if (!EgalleryOptions::isImportFromTidypicsEnabled()) {
-    system_message(elgg_echo('egallery:import:tidypics:egallery:invalid'));
-    forward(REFERRER);
+    return elgg_error_response(elgg_echo('egallery:import:tidypics:error'));
 }
 
 // Get variables
@@ -17,12 +16,10 @@ $album_guids = get_input('album_guid');
 
 $entity = get_entity($guid);
 if ( !$entity instanceof \EntityGallery ) { 
-    elgg_error_response(elgg_echo('egallery:import:tidypics:egallery:invalid'));
-    forward(REFERRER);
+    return elgg_error_response(elgg_echo('egallery:import:tidypics:egallery:invalid'));
 }
 if ( !$entity->canEdit() ) { 
-    elgg_error_response(elgg_echo('egallery:invalid_access'));
-    forward(REFERRER);
+    return elgg_error_response(elgg_echo('egallery:invalid_access'));
 }
 
 $album_id = is_array($album_guids)?$album_guids[0]:$album_guids;

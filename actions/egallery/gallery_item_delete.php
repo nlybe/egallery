@@ -16,9 +16,7 @@ if (!$entity->canDelete()) {
 }
 
 if ($entity->delete()) {
-    system_message(elgg_echo("egallery:item:delete:success"));
-} else {
-    return elgg_error_response(elgg_echo('egallery:item:delete:failed'));    
-}
+    return elgg_ok_response('', elgg_echo('egallery:item:delete:success'));
+} 
 
-forward(REFERER);
+return elgg_error_response(elgg_echo('egallery:item:delete:failed'));

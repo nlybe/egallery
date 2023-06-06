@@ -55,7 +55,7 @@ $entity->access_id = $access_id;
 
 if ($entity->save()) {
     elgg_clear_sticky_form('egallery_item');
-    return elgg_ok_response('', elgg_echo('egallery:item:save:success'), REFERER);
+    return elgg_ok_response('', elgg_echo('egallery:item:save:success'), REFERRER);
 } 
 else {
     return elgg_error_response(elgg_echo('egallery:item:save:failed'));

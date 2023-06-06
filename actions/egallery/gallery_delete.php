@@ -16,10 +16,7 @@ if (!$entity->canDelete()) {
 
 $container = $entity->getContainerentity();
 if ($entity->delete()) {
-    system_message(elgg_echo("egallery:delete:success"));
-    forward($container->getURL());
-} else {
-    return elgg_error_response(elgg_echo('egallery:delete:failed'));    
-}
+    return elgg_ok_response('', elgg_echo('egallery:delete:success'), $container->getURL());
+} 
 
-forward(REFERER);
+return elgg_error_response(elgg_echo('egallery:delete:failed'));

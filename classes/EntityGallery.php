@@ -57,6 +57,9 @@ class EntityGallery extends ElggObject {
      * @return GalleryItem or false
      */
     public function getGalleryCoverImage() {
+        if (!$this->cover_guid) {
+            return false;
+        }
         $cover_image = get_entity($this->cover_guid);
         
         if ($cover_image instanceof \GalleryItem) {
@@ -126,7 +129,7 @@ class EntityGallery extends ElggObject {
      * 
      * @return boolean
      */
-    public function delete($follow_symlinks = true) {
+    public function delete(bool $recursive = true): bool {
         if (!$this->canDelete()) {
 			return false;
 		}
@@ -156,7 +159,7 @@ class EntityGallery extends ElggObject {
 	 *
 	 * @return bool
 	 */
-	public function canComment($user_guid = 0, $default = null) {
+    public function canComment(int $user_guid = 0): bool {
 		$result = parent::canComment($user_guid, $default);
 		if (!$result) {
 			return $result;

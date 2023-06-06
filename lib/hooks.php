@@ -9,11 +9,11 @@ use Egallery\EgalleryOptions;
  /**
  * Add gallery option on entities, if enabled on settings
  * 
- * @param \Elgg\Hook $hook
+ * @param \Elgg\Event $event
  */ 
-function egallery_entity_menu_setup(\Elgg\Hook $hook) {
-    $return = $hook->getValue();
-    $entity = $hook->getEntityParam();
+function egallery_entity_menu_setup(\Elgg\Event $event) {
+    $return = $event->getValue();
+    $entity = $event->getEntityParam();
     if (!$entity instanceof \ElggEntity) {
         return false;
     }
@@ -87,11 +87,11 @@ function egallery_entity_menu_setup(\Elgg\Hook $hook) {
  /**
  * Register gallery item to user menu
  * 
- * @param \Elgg\Hook $hook
+ * @param \Elgg\Event $event
  */ 
-function egallery_gallery_owner_menu(\Elgg\Hook $hook) {
-    $entity = $hook->getEntityParam();
-    $return = $hook->getValue();
+function egallery_gallery_owner_menu(\Elgg\Event $event) {
+    $entity = $event->getEntityParam();
+    $return = $event->getValue();
     
     if ($entity instanceof \ElggUser && EgalleryOptions::isEntityTypeGalleryEnabled('user')) {
         $return[] = \ElggMenuItem::factory([
@@ -114,10 +114,10 @@ function egallery_gallery_owner_menu(\Elgg\Hook $hook) {
 /**
  * Format and return the URL for entity gallery objects
  *
- * @param \Elgg\Hook $hook
+ * @param \Elgg\Event $event
  */
-function egallery_object_set_url(\Elgg\Hook $hook) {
-    $entity = $hook->getEntityParam();    
+function egallery_object_set_url(\Elgg\Event $event) {
+    $entity = $event->getEntityParam();    
     if (!$entity instanceof \EntityGallery) {
 		return;
 	}
@@ -129,10 +129,10 @@ function egallery_object_set_url(\Elgg\Hook $hook) {
 /**
  * Format and return the URL for entity gallery item objects
  *
- * @param \Elgg\Hook $hook
+ * @param \Elgg\Event $event
  */
-function egallery_item_object_set_url(\Elgg\Hook $hook) {
-    $entity = $hook->getEntityParam();    
+function egallery_item_object_set_url(\Elgg\Event $event) {
+    $entity = $event->getEntityParam();    
     if (!$entity instanceof \GalleryItem) {
 		return;
 	}
@@ -144,13 +144,13 @@ function egallery_item_object_set_url(\Elgg\Hook $hook) {
 /**
  * Create Gallery Items from items uploaded
  * 
- * @param \Elgg\Hook $hook
+ * @param \Elgg\Event $event
  */
-function egallery_item_upload(\Elgg\Hook $hook) {
+function egallery_item_upload(\Elgg\Event $event) {
     elgg_gatekeeper();
-    $return = $hook->getValue();
+    $return = $event->getValue();
     
-    $file = $hook->getParam('upload')->file;
+    $file = $event->getParam('upload')->file;
     return elgg_call(ELGG_IGNORE_ACCESS, function() use ($file) {
         $fh = get_entity($file->getGUID());
         $container = $fh->getContainerentity();   
@@ -160,7 +160,7 @@ function egallery_item_upload(\Elgg\Hook $hook) {
         $fh->access_id = $container->access_id;    
         $fh->save();
         $source = $fh->getFilenameOnFilestore();
-            
+    
         $icon_sizes = elgg_get_config('gallery_item_sizes'); 
         foreach ($icon_sizes as $name => $size_info) {   
             try {
@@ -189,12 +189,12 @@ function egallery_item_upload(\Elgg\Hook $hook) {
 /**
  * Appends gallery to entity's full view
  *
- * @param \Elgg\Hook $hook
+ * @param \Elgg\Event $event
  * @return array
  */
-function egallery_filter_full_view_vars(\Elgg\Hook $hook) {
+function egallery_filter_full_view_vars(\Elgg\Event $event) {
 
-    $return = $hook->getValue();
+    $return = $event->getValue();
     $entity = elgg_extract('entity', $return);
     if (!$entity instanceof \ElggEntity) {
         return;
@@ -222,10 +222,10 @@ function egallery_filter_full_view_vars(\Elgg\Hook $hook) {
  /**
  * Update gallery entity title menu
  * 
- * @param \Elgg\Hook $hook
+ * @param \Elgg\Event $event
  */ 
-function egallery_title_menu_setup(\Elgg\Hook $hook) {
-    $entity = $hook->getEntityParam();
+function egallery_title_menu_setup(\Elgg\Event $event) {
+    $entity = $event->getEntityParam();
     if (!$entity instanceof \EntityGallery) {
         return;
     }
@@ -234,7 +234,7 @@ function egallery_title_menu_setup(\Elgg\Hook $hook) {
         return;
     }
     
-    $result = $hook->getValue();
+    $result = $event->getValue();
     foreach ($result->all() as $section_key => $section) {
         foreach ($section->getItems() as $item_key => $item) {
             if ($item->getName() == 'edit') {

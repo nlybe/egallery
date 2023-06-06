@@ -16,7 +16,7 @@ $comments_on = get_input("comments_on");
 $container = get_entity($container_guid);
 
 // get access id or assign according site default access and container
-$access_level = get_default_access();
+$access_level = elgg_get_default_access();
 if ($container instanceof \ElggGroup) {
     $access_level = $container->group_acl;
 }
@@ -42,8 +42,7 @@ if ($guid == 0) {
 } else {
     $entity = get_entity($guid);
     if (!$entity->canEdit()) {
-        system_message(elgg_echo('egallery:invalid_access'));
-        forward(REFERRER);
+        return elgg_ok_response('', elgg_echo('egallery:invalid_access'), REFERRER);
     }
     
     if (!$title) {

@@ -51,7 +51,7 @@ class GalleryItem extends ElggFile {
      * 
      * @return boolean
      */
-    public function delete($follow_symlinks = true) {
+    public function delete(bool $recursive = true): bool {
         if (!$this->canDelete()) {
 			return false;
 		}

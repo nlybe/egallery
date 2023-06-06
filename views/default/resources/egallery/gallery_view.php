@@ -34,13 +34,12 @@ if ($entity->canEdit() && EgalleryOptions::isImportFromTidypicsEnabled()) {
 $page_owner = elgg_get_page_owner_entity();
 if ($page_owner instanceof \ElggGroup) {
     elgg_push_breadcrumb(elgg_echo('groups'), 'groups');
-    // elgg_push_breadcrumb($page_owner->name, $page_owner->getURL());
-	elgg_push_collection_breadcrumbs('object', 'entity_gallery', $page_owner);
+    elgg_push_collection_breadcrumbs('object', 'entity_gallery', $page_owner);
 	elgg_push_collection_breadcrumbs('object', 'entity_gallery', $entity);
 }
 else {
-	elgg_push_collection_breadcrumbs('object', 'entity_gallery');
-	elgg_push_breadcrumb($entity->getDisplayName(), true);	
+	elgg_push_collection_breadcrumbs('object', 'entity_gallery', $container);
+	elgg_push_entity_breadcrumbs($entity, true);
 }
 
 $vars['full_view'] = true;
