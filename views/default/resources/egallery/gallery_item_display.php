@@ -4,6 +4,7 @@
  * @package egallery 
  */
 
+use Elgg\Exceptions\Http\EntityNotFoundException;
 use Egallery\EgalleryOptions;
 
 // get entity
@@ -12,8 +13,7 @@ elgg_entity_gatekeeper($guid, 'object', 'gallery_item');
 
 $entity = get_entity($guid);
 if (!$entity instanceof \GalleryItem) {
-    elgg_error_response(elgg_echo('egallery:invalid'));
-    forward(REFERRER);
+    throw new EntityNotFoundException();
 }
 
 $container = $entity->getContainerEntity();

@@ -26,9 +26,7 @@ $p_gallery->cover_guid = $item->getGUID();
 if ($p_gallery->save()) {
     return elgg_ok_response('', elgg_echo('egallery:set_cover:success'), REFERRER);
 } 
-else {
-    return elgg_error_response(elgg_echo('egallery:set_cover:failed'));
-}
 
-forward(REFERRER);
+
+return elgg_error_response(elgg_echo('egallery:set_cover:failed'));
 

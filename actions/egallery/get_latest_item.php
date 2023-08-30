@@ -4,9 +4,10 @@
  * @package egallery 
  */
 
+use Elgg\Exceptions\Http\BadRequestException;
+
 if (!elgg_is_xhr()) {
-    register_error('Sorry, Ajax only!');
-    forward(REFERRER);
+    throw new BadRequestException();
 }
 
 $result = [];

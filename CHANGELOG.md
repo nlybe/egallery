@@ -1,5 +1,9 @@
 # Change Log
 
+## 5.5.2 (Aug 2023)
+
+- Improve error messages and redirects
+
 ## 5.5.1 (June 2023)
 
 - Renamed hooks.php to events.php

@@ -4,6 +4,8 @@
  * @package egallery 
  */
 
+use Elgg\Exceptions\Http\EntityNotFoundException;
+use Elgg\Exceptions\Http\EntityPermissionsException;
 use Egallery\EgalleryOptions;
 
 if (!EgalleryOptions::isImportFromTidypicsEnabled()) {
@@ -25,12 +27,12 @@ if ( !$entity->canEdit() ) {
 $album_id = is_array($album_guids)?$album_guids[0]:$album_guids;
 $album = get_entity($album_id);
 if ( !$album instanceof \TidypicsAlbum ) { 
+    throw new EntityNotFoundException();
     elgg_error_response(elgg_echo('egallery:import:tidypics:album:invalid'));
-    forward(REFERRER);
 }
 if ( !$album->canEdit() ) { 
+    throw new EntityPermissionsException();
     elgg_error_response(elgg_echo('egallery:import:tidypics:album:invalid_access'));
-    forward(REFERRER);
 }
 
 $images = elgg_get_entities([

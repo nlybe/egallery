@@ -4,6 +4,7 @@
  * @package egallery 
  */
 
+use Elgg\Exceptions\Http\BadRequestException;
 use Egallery\EgalleryOptions;
 
 // get entity
@@ -17,8 +18,7 @@ $vars['gallery'] = $entity;
 $container = $entity->getContainerEntity();
 $sub = $container->getSubtype();
 if (!EgalleryOptions::isEntityTypeGalleryEnabled($sub)) {
-    elgg_error_response(elgg_echo('egallery:onject:disabled', [$sub]));
-    forward(REFERRER);
+    throw new BadRequestException();
 }
 
 if ($entity->canEdit() && EgalleryOptions::isImportFromTidypicsEnabled()) {
