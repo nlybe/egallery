@@ -18,6 +18,6 @@ $vars['message'] = elgg_echo("river:object:entity_gallery:container", [
 		'text' => $container->getDisplayName(),
 	])
 ]);
-$vars['message'] .= elgg_get_excerpt($entity->description?$entity->description:'');
+$vars['message'] .= $entity->description?elgg_get_excerpt($entity->description):'';
 
 echo elgg_view('river/elements/layout', $vars);

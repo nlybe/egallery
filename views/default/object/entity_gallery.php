@@ -89,7 +89,7 @@ if ($full && !elgg_in_context('gallery')) {
 } 
 else {
     $params = [
-        'content' => elgg_get_excerpt($entity->description?$entity->description:''),
+        'content' => $entity->description?elgg_get_excerpt($entity->description):'',
         'icon' => false,
         'imprint' => $imprint,
     ];

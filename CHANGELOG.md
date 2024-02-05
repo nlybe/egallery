@@ -3,6 +3,7 @@
 ## 5.5.2 (Aug 2023)
 
 - Improve error messages and redirects
+- Minor fix for entity description
 
 ## 5.5.1 (June 2023)
 
